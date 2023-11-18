@@ -6,6 +6,12 @@ import "./HomePage/styleMain/navBarMainPage.css"
 import { BrowserRouter } from 'react-router-dom';
 import ParkCitRouter from './Routemain';
 
+
+//fonts
+
+import '/public/fonts/OpenSauce/OpenSauceOne-Black.ttf'
+import '/public/fonts/OpenSauce/OpenSauceOne-Regular.ttf'
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

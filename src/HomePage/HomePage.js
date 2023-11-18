@@ -18,13 +18,12 @@ export default function HomePage(){
                         </span>
                     </h1>
                     <p className="para-text">Start Your Seamless Journey: GEAR for Effortless <br/> Mobility with CIT's Parking Solutions</p>
+                    <div>
                     <button className="homeLogin-btn">LOGIN</button>
+                    </div>
                 </div>
-
-                
-
+               
             </div>
             
-
     </>)
 }
