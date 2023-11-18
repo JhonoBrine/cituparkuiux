@@ -23,12 +23,25 @@ export default function AboutPage() {
           <h3>Creators at the Core</h3>
 
           <div className="profile-container">
-            <div className="profile p1"><img/><span>Jhon Lorenz Pabroa</span></div>
-            <div className="profile p2"><img/><span>April Justine Vega</span></div>
-            <div className="profile p3"><img/><span>Rey Mar Segalle</span></div>
-            <div className="profile p4"><img/><span>Jasmine Lisondra</span></div>
-
+            <div className="profile"><div className="profile-img"></div><span>Jhon Lorenz Pabroa</span></div>
+            <div className="profile"><div className="profile-img"></div><span>April Justine Vega</span></div>
+            <div className="profile"><div className="profile-img"></div><span>Rey Mar Segalle</span></div>
+            <div className="profile"><div className="profile-img"></div><span>Jasmine Lisondra</span></div>
           </div>
+
+          <p>
+          Meet the minds behind the revolution. Our creators ,driven by a passing for improving campus life, have <br/> developed ParkIT to reflect our dedication to making every journey at CIT-U seamless, stress-free and of <br/> course GEAR FOR LIFE.
+          </p>
+
+          <h3>Safety, Simplified</h3>
+
+          <p>
+          Your safety is paramount. ParkIT goes beyond covenience by integrating cutting-edge security features, <br/> ensuring the protection of your vehicle and providing you with unmatched peace of mind.
+          </p>
+          <br/>
+          <p>
+          Thank you Visitor!
+          </p>
         </div>
         
       </div>
