@@ -13,17 +13,42 @@ body, h1, p, div {
     background-color: #520000;
     color: white;
 
+}
 
+.cituBldg-image{
+    height: 89.9vh;
+    width: 100vw;
+    background-size: 50px;
     background-image: url("/public/images/citublg.png");
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: right 50px;
+    background-position: left 700px top 50px;
+
+    opacity: 0.6;
+    z-index: 1;
+    position: absolute;
+}
+
+.citulogo-image{
+    height: 89.9vh;
+    width: 100vw;
+    background-image: url("/public/images/citulogo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40%;
+
+    opacity: 0.1;
+    z-index: 0;
+    
 }
 
 .homeLogin-container{
 
     color: inherit;
-    padding: 0 5rem;
+    padding: 5rem 5rem;
+    position: absolute;
+    top: 100px;
 }
 
 .home-textTitle{
