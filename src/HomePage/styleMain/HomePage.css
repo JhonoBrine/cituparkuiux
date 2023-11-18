@@ -1,0 +1,37 @@
+* {
+    box-sizing: border-box;
+}
+
+body, h1, p, div {
+    margin: 0;
+    padding: 0;
+}
+
+.main-content{
+    height: 89.9vh;
+    width: 100vw;
+    background-color: #520000;
+    color: white;
+
+
+    background-image: url("/public/images/citublg.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right 50px;
+}
+
+.homeLogin-container{
+
+    color: inherit;
+    padding: 0 5rem;
+}
+
+.home-textTitle{
+
+    font-size: 4em
+}
+
+.span-textTitle{
+
+    color: #f6c301;
+}
