@@ -6,7 +6,7 @@ export default function NavbarMain() {
     
         <nav className="navMain">
 
-            <Link to="/home" className="site-logo">PARKIT</Link>
+            <Link to="/home"><div className="site-logo"></div></Link>
 
             <ul>
                 <CustomLink to="/home">Home</CustomLink>
