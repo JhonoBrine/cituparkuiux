@@ -16,10 +16,10 @@ export default function HomeForgotPassword(){
                     <h1 className="forgot-text">Trouble logging in?</h1>
 
                     <div className="loginBox">
-                    <p className="text-u">USERNAME</p>
-                    <label><input className="inputBox uName"></input></label>
-                    <p className="text-u">PASSWORD</p>
-                    <label><input className="inputBox pWord"></input></label>
+                    <p className="text-u" >SCHOOL ID #</p>
+                    <label><input className="inputBox uName" placeholder="XX-XXXX-XX"></input></label>
+                    <p className="text-u" >SCHOOL EMAIL</p>
+                    <label><input className="inputBox pWord" placeholder="juan.delacruz@cit.edu"></input></label>
                     </div>
                     <button className="loginUser-btn">RESET PASSWORD</button>
                     <Link style={{ textDecoration: 'none' }} to="/home/login"><p className="forgor-text">BACK TO LOGIN</p></Link>

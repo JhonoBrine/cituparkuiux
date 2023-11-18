@@ -18,9 +18,9 @@ export default function HomeLogin(){
 
                     <div className="loginBox">
                     <p className="text-u">USERNAME</p>
-                    <label><input className="inputBox uName"></input></label>
+                    <label><input className="inputBox uName" placeholder="XX-XXXX-XX"></input></label>
                     <p className="text-u">PASSWORD</p>
-                    <label><input className="inputBox pWord"></input></label>
+                    <label><input className="inputBox pWord"placeholder="************"></input></label>
                     </div>
                     <button className="loginUser-btn">LOGIN</button>
                     <Link style={{ textDecoration: 'none' }} to="/home/forgotPassword"><p className="forgor-text">FORGOT YOUR PASSWORD?</p></Link>
