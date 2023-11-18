@@ -20,6 +20,8 @@ body {
     align-items: stretch;
     gap: 5rem;
     padding: 0 5rem;
+
+    border-bottom: 1px solid white;
 }
 
 .site-logo{

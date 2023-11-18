@@ -1,0 +1,43 @@
+
+.main-container{
+    text-align: center;
+    height: 89.9vh;
+    width: 100vw;
+    background-color: #520000;
+    color: white;
+
+    font-family: "OpenSauceRegular";
+    font-size: 1.28rem;
+
+    position: absolute;
+
+}
+
+h3{
+
+    font-family: "OpenSauceBlack";
+    font-size: 1.4rem;
+}
+
+.about-title{
+
+    font-family: "OpenSauceBlack";
+    color: #f6c301;
+    font-size: 2rem;
+}
+
+.citulogo-image{
+    height: 89.9vh;
+    width: 100vw;
+    background-image: url("/public/images/citulogo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40%;
+
+    opacity: 0.1;
+
+    position: absolute;
+
+    
+}
