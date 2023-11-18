@@ -23,7 +23,15 @@ body {
 }
 
 .site-logo{
-    font-size: 2rem;
+    height: 95px;
+    width: 20vw;
+
+    background-image: url("/public/images/parkcitLogomain.png");
+    background-size: contain;
+    background-size: 14rem;
+    background-repeat: no-repeat;
+    background-position: left center;
+
 }
 
 .navMain ul {
