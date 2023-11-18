@@ -6,6 +6,7 @@ export default function NavbarMain() {
     
         <nav className="navMain">
 
+            
             <Link to="/home"><div className="site-logo"></div></Link>
 
             <ul>
