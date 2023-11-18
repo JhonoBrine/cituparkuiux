@@ -55,3 +55,20 @@ body {
 .navMain li:hover{
     background-color: #911f1f;
 }
+
+@media (max-height: 700px){
+    .navMain {
+        top: 0;
+        height: 95px;
+        width: 98.9vw;
+    
+        background-color: #520000;
+        color: white;
+        display: flex;
+    
+        justify-content: space-between;
+        align-items: stretch;
+        gap: 5rem;
+        padding: 0 5rem;
+    }
+}
