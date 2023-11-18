@@ -1,7 +1,9 @@
+import { Link, useNavigate } from "react-router-dom"
 import "./styleMain/HomePage.css"
+import { useEffect } from "react";
 
 export default function HomePage(){
-
+    
     return (<>
         
             <div className="main-content">
@@ -19,7 +21,7 @@ export default function HomePage(){
                     </h1>
                     <p className="para-text">Start Your Seamless Journey: GEAR for Effortless <br/> Mobility with CIT's Parking Solutions</p>
                     <div>
-                    <button className="homeLogin-btn">LOGIN</button>
+                    <Link to="/home/login"><button className="homeLogin-btn">LOGIN</button></Link>
                     </div>
                 </div>
                
