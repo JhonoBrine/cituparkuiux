@@ -23,10 +23,15 @@ export default function AboutPage() {
           <h3>Creators at the Core</h3>
 
           <div className="profile-container">
-            <div className="profile"><div className="profile-img"></div><span>Jhon Lorenz Pabroa</span></div>
-            <div className="profile"><div className="profile-img"></div><span>April Justine Vega</span></div>
-            <div className="profile"><div className="profile-img"></div><span>Rey Mar Segalle</span></div>
-            <div className="profile"><div className="profile-img"></div><span>Jasmine Lisondra</span></div>
+
+            <div className="profile"><div className="profile-img pab1"></div><span className="span-name">Jhon Lorenz Pabroa</span><span className="span-prof">"Life is a gacha."</span></div>
+
+            <div className="profile jusprof"><div className="profile-img jus2"></div><span className="span-name">April Justine Vega</span><span className="span-prof">“Im only one call away, <br/>ill be there to save the day”</span></div>
+
+            <div className="profile"><div className="profile-img rey3"></div><span className="span-name">Rey Mar Segalle</span><span className="span-prof">"Just keep moving forward"</span></div>
+
+            <div className="profile"><div className="profile-img jas4"></div><span className="span-name">Jasmine Lisondra</span><span className="span-prof">"What I Want is Already Mine!"</span></div>
+
           </div>
 
           <p>
