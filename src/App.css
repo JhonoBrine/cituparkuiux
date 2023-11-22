@@ -1,38 +1,93 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.Topbar{
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  object-fit: fill;
+}
+.Logo{
+  height: 80px;
+  /* margin-right: 10px; */
+  background-color: gold;
+  width:160px;
+}
+.Building{
+  width: 5000px;
+  height: 80px;
+  object-fit: fill;
+}
+.navBar{
+  background-color: gold;
+}
+.customGrid {
+  margin-top: 20px;
+}
+
+.customBox {
+  background-color: maroon;
+  width: 90%;
+  margin-left: 5%;
+  height: 700px;
+  position: absolute;
+}
+.campus{
+  height: 102%;
+  width: 102%;
+  object-fit: fill;
+}
+.admin{
+  margin-top: 10px;
+  margin-left: 88%;
+  background-color: transparent;
+  position: absolute;
   color: white;
+  font-weight: bolder;
+  font-size: 40px;
+}
+.TextField {
+  justify-content: center;
+  margin-top: 100px;
+  text-align: center;
+  border-color: transparent;
 }
 
-.App-link {
-  color: #61dafb;
+.TextField input{
+  background-color: whitesmoke;
+  padding-bottom: 20px;
+  /* margin-bottom: 20px; */
+  text-align: center;
+  width: 800px;
+  border-radius: 10px 10px 10px 10px;
+  font-weight: bolder;
 }
+.test{
+  margin-bottom: 20px;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+}
+.buttons{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 22%;
+  margin-right: 22%;
+  margin-top: 10px;
+}
+.HomeGrid{
+  background-color: maroon;
+  margin-left: 10%;
+  height: 700px;
+  position: absolute;
+}
+.space{
+  margin-right: 20%;
+  margin-left: 10px;
+  font-weight: bolder;
+  font-size: 20px;
+}
+.SRCancel{
+  margin-left: 45%;
+}
+.space2{
+  margin-right: 5%;
+  margin-left: 10px;
+  font-weight: bolder;
+  font-size: 20px;
 }
