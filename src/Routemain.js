@@ -7,11 +7,13 @@ import ServicePage from "./HomePage/ServicePage";
 import ContactPage from "./HomePage/ContactPage";
 import HomeLogin from "./HomePage/HomeLogin";
 import HomeForgotPassword from "./HomePage/HomeForgotPassword";
+import AdminHomePage from "./AdminPage/AdminHomePage";
+import UserParkingLotView from "./HomePage/UserParkingLotView";
 
 export default function ParkCitRouter(){
 
     return(<>
-    
+
         <NavbarMain/>
         <Routes>
 
@@ -22,8 +24,10 @@ export default function ParkCitRouter(){
                 <Route path="/home/forgotPassword" element={<HomeForgotPassword/>}/>
             </Route>
             <Route path="/about" element={<AboutPage/>}/>
-            <Route path="/service" element={<ServicePage/>}/>
-            <Route path="/contact" element={<ContactPage/>}/>
+            <Route path="/parkingLotView" element={<UserParkingLotView/>}/>
+
+ 
+            <Route path="/admin" element={<AdminHomePage/>}/>
 
         </Routes>
     </>)

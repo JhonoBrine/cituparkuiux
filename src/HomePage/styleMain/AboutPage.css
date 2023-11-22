@@ -8,13 +8,13 @@ body, h1, p, div {
 }
 
 .main-container{
-    height: 89.9vh;
-    width: 100vw;
+    height: 565px;
+    width: 100%;
     background-color: #520000;
     color: white;
 
     font-family: "OpenSauceRegular";
-    font-size: 1rem;
+    font-size: 0.8rem;
 
     position: relative;
     
@@ -38,25 +38,25 @@ body, h1, p, div {
 h3{
 
     font-family: "OpenSauceBlack";
-    font-size: 1.2rem;
+    font-size: 0.8rem;
 }
 
 .about-title{
 
     font-family: "OpenSauceBlack";
     color: #f6c301;
-    font-size: 2rem;
+    font-size: 1.6rem;
 }
 
 .profile-container{
 
-    height: 20rem;
-    width: 55vw;
+    height: 12rem;
+    width: 45vw;
     display: flex;
     /* border: 1px white solid; */
     justify-content: space-between;
 
-    margin-bottom: 2rem;
+    margin-bottom: 0.15rem;
 }
 
 .profile{
@@ -72,11 +72,11 @@ h3{
 
 .profile-img{
 
-    height: 150px;
-    width: 150px;
+    height: 100px;
+    width: 100px;
     border-radius: 50% 50% 50% 50%;
-    margin: 1rem;
-    border: 3px solid #f6c301;
+    margin: 0.6rem;
+    border: 2.2px solid #f6c301;
 }
 
 .pab1{
@@ -84,7 +84,7 @@ h3{
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 10rem;
+    background-size: 6rem;
 
 }
 
@@ -93,7 +93,7 @@ h3{
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 10rem;
+    background-size: 6rem;
 }
 
 .rey3{
@@ -101,7 +101,7 @@ h3{
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 10rem;
+    background-size: 6rem;
 }
 
 .jas4{
@@ -109,20 +109,20 @@ h3{
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 10rem;
+    background-size: 6rem;
 }
 
 .span-name{
 
     color:#f6c301;
-    font-size: 1.3rem;
+    font-size: 0.9rem;
 }
 .span-prof{
-
-    margin-top: 1rem;
+    font-size: 0.55rem;
+    margin-top: 0.5rem;
 }
 
-.citulogo-image{
+/* .citulogo-image{
     height: 89.9vh;
     width: 100vw;
     background-image: url("/public/images/citulogo.png");
@@ -136,4 +136,111 @@ h3{
     position: absolute;
 
     
-}
+} */
+
+/* @media (max-height: 700px){
+
+    .main-container{
+        height: 80vh;
+        width: 98.9vw;
+        background-color: #520000;
+        color: white;
+    
+        font-family: "OpenSauceRegular";
+        font-size: 0.8rem;
+    
+        position: relative;
+        
+        display: flex;
+        justify-content: center;
+        
+    }
+
+    h3{
+
+        font-family: "OpenSauceBlack";
+        font-size: 0.9rem;
+    }
+    
+    .about-title{
+    
+        font-family: "OpenSauceBlack";
+        color: #f6c301;
+        font-size: 1.6rem;
+    }
+
+    .profile-container{
+
+        height: 12rem;
+        width: 45vw;
+        display: flex;
+        border: 1px white solid;
+        justify-content: space-between;
+        
+        margin-bottom: 0.15rem;
+    }
+    
+    .profile{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 1em;
+    
+    
+    }
+    
+    .profile-img{
+    
+        height: 100px;
+        width: 100px;
+        border-radius: 50% 50% 50% 50%;
+        margin: 0.6rem;
+        border: 2.2px solid #f6c301;
+    }
+
+    .span-name{
+
+        color:#f6c301;
+        font-size: 0.8rem;
+    }
+    .span-prof{
+        
+        font-size: 0.5rem;
+        margin-top: 0.5rem;
+    }
+
+    .pab1{
+        background-image: url("/public/images/pab-image.jpg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 6rem;
+    
+    }
+    
+    .jus2{
+        background-image: url("/public/images/vega-img.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 6rem;
+    }
+    
+    .rey3{
+        background-image: url("/public/images/reyMar-img.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 6rem;
+    }
+    
+    .jas4{
+        background-image: url("/public/images/jasmine-img.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 6rem;
+    }
+    
+} */

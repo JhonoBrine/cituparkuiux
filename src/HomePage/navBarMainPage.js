@@ -12,8 +12,7 @@ export default function NavbarMain() {
             <ul>
                 <CustomLink to="/home">Home</CustomLink>
                 <CustomLink to="/about">About</CustomLink>
-                <CustomLink to="/service">Services</CustomLink>
-                <CustomLink to="/contact">Contact</CustomLink>
+                <CustomLink to="/parkingLotView">Parking Lot</CustomLink>
             </ul>
         </nav>
     </>)
