@@ -3,8 +3,7 @@ import { Outlet, Route, Routes } from "react-router-dom";
 import NavbarMain from "../HomePage/navBarMainPage";
 import HomePage from "../HomePage/HomePage";
 import AboutPage from "../HomePage/AboutPage";
-import ServicePage from "./HomePage/ServicePage";
-import ContactPage from "./HomePage/ContactPage";
+
 import HomeLogin from "../HomePage/HomeLogin";
 import HomeForgotPassword from "../HomePage/HomeForgotPassword";
 import AdminHomePage from "../AdminPage/AdminHomePage";
