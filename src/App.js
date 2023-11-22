@@ -1,25 +1,22 @@
-import logo from './logo.svg';
+import { useState } from "react";
+import Topbar from './Topbar2.png';
+import Building from './TopbarBuild2.png';
 import './App.css';
 
-function App() {
+const App = () => {
+  const handleLogoClick = () => {
+    window.location.href = 'http://localhost:3000';
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="Topbar">
+      <a href="http://localhost:3000" onClick={handleLogoClick}>
+        <img className="Logo" src={Topbar} alt="LOGO" />
+      </a>
+      <img className="Building" src={Building} alt="VILDS" />
+      <p className="admin">ADMIN</p>
     </div>
   );
-}
+};
 
 export default App;
