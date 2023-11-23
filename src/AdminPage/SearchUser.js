@@ -24,14 +24,14 @@ const SearchUser = () => {
   };
 
   const handleSearchUser = () => {
-    navigate('/search-result');
+    navigate('/admin/search-result');
   };
 
   return (
     <div className="SearchUser">
       <Grid container spacing={2} className="customGrid">
         <Grid item xs={12}>
-          <Box className="customBox">
+          <Box className="customBox" style={{marginLeft: '5%', marginTop: '50px',outline: '5px solid #f6c301'}}>
             <div className='TextField'>
               <div className='test'>
                 <TextField

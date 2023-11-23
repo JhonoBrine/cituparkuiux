@@ -5,6 +5,17 @@ import { useState } from "react";
 export default function HomeLogin(props){
     const [inpUName, setInpUName] = useState("");
     const [inpPword, setInpPword] = useState("");
+    const [user, setUser] = useState([
+        {username: "11-1111-111",
+         password: "admin",
+         userType: "admin"
+        },
+        {username: "22-2222-222",
+         password: "sekyu",
+         userType: "sekyu"
+        },
+    ])
+
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     console.log(props.user);
     const navigate = useNavigate();
@@ -17,11 +28,14 @@ export default function HomeLogin(props){
     }
 
     function onChangeLogin(){
-        
-        if(inpUName === "admin" && inpPword === "admin"){
-            navigate("/admin");
-            
+        for(let i = 0; i < user.length; i++){
+            if((inpUName === user[i].username && inpPword === user[i].password)){ 
+                localStorage.setItem("user", JSON.stringify(user[i]));
+                navigate("/admin");
+                break;
+            }
         }
+
     }
     return (<>
 

@@ -42,11 +42,12 @@ export default function CreateUser(){
     setPopoverOpen(false);
   };
 
-  return (
-    <div className="CreateUser">
-      <Grid container spacing={2} className="customGrid">
+  return (<>
+    <div className="admin-createuserContainer">
+      <div>
+      <Grid container spacing={2} className="customGrid" >
         <Grid item xs={12}>
-          <Box className="customBox">
+          <Box className="customBox" style={{marginLeft: '5%', marginTop: '50px',outline: '5px solid #f6c301'}}>
             <div className='TextField'>
               <div className='test'>
                 <TextField
@@ -107,17 +108,19 @@ export default function CreateUser(){
                   GENERATE
                 </Button>
               </div>
-              <div className='test'>
-                <Button style={{ backgroundColor: 'gold' }} variant="contained" onClick={handleCreateUser}>
-                  CREATE USER
-                </Button>
-              </div>
+              
             </div>
 
             <div className='buttons'>
-              <div className='BtnCancel'>
+              <div className='test'>
                 <Button style={{ backgroundColor: 'gold', color: 'maroon', fontWeight: 'bolder' }} variant="contained">
                   CANCEL
+                </Button>
+              </div>
+
+              <div className='test'>
+                <Button style={{ backgroundColor: 'gold' }} variant="contained" onClick={handleCreateUser}>
+                  CREATE USER
                 </Button>
               </div>
               {/* ... other buttons ... */}
@@ -125,7 +128,7 @@ export default function CreateUser(){
           </Box>
         </Grid>
       </Grid>
-
+    </div>                 
   {/* some optional shit */}
       {/* <Snackbar
         open={snackbarOpen}
@@ -155,6 +158,6 @@ export default function CreateUser(){
         </Box>
       </Popover>
     </div>
-  );
+  </>);
 };
 

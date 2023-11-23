@@ -7,7 +7,7 @@ const ParkingSlots = () => {
     <div className="SearchResult">
       <Grid container spacing={2} className="customGrid">
         <Grid item xs={12}>
-          <Box className="customBox">
+          <Box className="customBox" style={{marginLeft: '5%', marginTop: '50px',outline: '5px solid #f6c301'}}>
             
             <Grid container style={{ backgroundColor: 'gold', width: '80%', marginLeft: '10%', color:'maroon',marginBottom:'10px'}}>
               <div>
