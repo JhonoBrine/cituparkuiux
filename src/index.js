@@ -12,10 +12,13 @@ import ParkCitRouter from './Routes/Routemain';
 import '/public/fonts/OpenSauce/OpenSauceOne-Black.ttf'
 import '/public/fonts/OpenSauce/OpenSauceOne-Regular.ttf'
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+  
     <BrowserRouter>
+
       <ParkCitRouter/>
     </BrowserRouter>
   </React.StrictMode>

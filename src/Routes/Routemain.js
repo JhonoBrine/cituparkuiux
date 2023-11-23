@@ -6,9 +6,13 @@ import AboutPage from "../HomePage/AboutPage";
 
 import HomeLogin from "../HomePage/HomeLogin";
 import HomeForgotPassword from "../HomePage/HomeForgotPassword";
-import AdminHomePage from "../AdminPage/AdminHomePage";
 import UserParkingLotView from "../HomePage/UserParkingLotView";
+import App from "../AdminPage/AppBar";
 
+import CreateUser from './AdminPage/CreateUser';
+import SearchUser from './AdminImages/SearchUser';
+import SearchResult from './AdminPage/SearchResult';
+import ParkingSlots from './AdminPage/ParkingSlots';
 export default function ParkCitRouter(){
 
     return(<>
@@ -25,8 +29,15 @@ export default function ParkCitRouter(){
             <Route path="/about" element={<AboutPage/>}/>
             <Route path="/parkingLotView" element={<UserParkingLotView/>}/>
 
- 
-            <Route path="/admin" element={<AdminHomePage/>}/>
+            <Route path="/admin" element={<Outlet/>}>
+                <Route index element={<App/>}/>
+
+                <Route path="/admin/create-user" element={<CreateUser />} />
+
+                <Route path="/admin/search-user" element={<SearchUser />} />
+                <Route path="/admin/search-result" element={<SearchResult />} />
+                <Route path="/admin/parking-slots" element={<ParkingSlots/>} />
+            </Route>
 
         </Routes>
     </>)

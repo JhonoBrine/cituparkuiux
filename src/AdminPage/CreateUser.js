@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Grid, Box, TextField, Button, Popover, Typography, List, ListItem, ListItemText, Snackbar } from '@mui/material';
 import './styleAdmMain/AdminStyle.css';
 
-const CreateUser = () => {
+export default function CreateUser(){
   const [anchorEl, setAnchorEl] = useState(null);
   const [userType, setUserType] = useState('');
   const [stickerId, setStickerId] = useState('');
@@ -158,4 +158,3 @@ const CreateUser = () => {
   );
 };
 
-export default CreateUser;

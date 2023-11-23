@@ -6,7 +6,7 @@ export default function HomeLogin(props){
     const [inpUName, setInpUName] = useState("");
     const [inpPword, setInpPword] = useState("");
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+    console.log(props.user);
     const navigate = useNavigate();
     function handleInputUser(e){
         setInpUName(e.target.value);
@@ -17,12 +17,10 @@ export default function HomeLogin(props){
     }
 
     function onChangeLogin(){
-
-        for(let i = 0; i < length(props.user); i++){
-            if(inpUName === props.user.userName && inpPword=== props.user.passWord){
-                navigate("/admin");
-                setIsLoggedIn(true);
-            }
+        
+        if(inpUName === "admin" && inpPword === "admin"){
+            navigate("/admin");
+            
         }
     }
     return (<>
@@ -41,7 +39,8 @@ export default function HomeLogin(props){
                     <div className="loginBox">
                     <p className="text-u">USERNAME</p>
                     <label><input 
-                    className="inputBox uName" placeholder="XX-XXXX-XX"
+                    className="inputBox uName" 
+                    placeholder="XX-XXXX-XX"
 
                     type="text"
                     value={inpUName}
@@ -50,16 +49,17 @@ export default function HomeLogin(props){
 
                     <p className="text-u">PASSWORD</p>
                     <label><input 
-                    className="inputBox pWord"placeholder="************"
+                    className="inputBox pWord"
+                    placeholder="************"
 
-                    
                     type="password"
                     value={inpPword}
                     onChange={handleInputPass}
                     ></input></label>
 
                     </div>
-                    <button className="loginUser-btn">LOGIN</button>
+
+                    <button className="loginUser-btn" onClick={onChangeLogin}>LOGIN</button>
                     <Link style={{ textDecoration: 'none' }} to="/home/forgotPassword"><p className="forgor-text">FORGOT YOUR PASSWORD?</p></Link>
                 </div>
             </div>
