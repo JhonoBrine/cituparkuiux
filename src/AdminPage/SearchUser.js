@@ -28,7 +28,7 @@ const SearchUser = () => {
   };
 
   return (
-    <div className="SearchUser">
+    <div className="admin-searchUserContainer">
       <Grid container spacing={2} className="customGrid">
         <Grid item xs={12}>
           <Box className="customBox" style={{marginLeft: '5%', marginTop: '50px',outline: '5px solid #f6c301'}}>
