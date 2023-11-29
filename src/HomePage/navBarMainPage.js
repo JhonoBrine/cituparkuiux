@@ -19,7 +19,6 @@ export default function NavbarMain() {
               <ul>
                 <CustomLink to="/admin/create-user">Create User</CustomLink>
                 <CustomLink to="/admin/search-user">Search User</CustomLink>
-                <CustomLink to="/admin/search-result">Search Result</CustomLink>
                 <CustomLink to="/admin/parking-slots">Parking Slots</CustomLink>
                 <button onClick={handleLogout}>Logout</button>
               </ul>
