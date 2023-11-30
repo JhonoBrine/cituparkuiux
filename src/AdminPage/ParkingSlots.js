@@ -9,12 +9,12 @@ const ParkingSlots = () => {
         <Grid item xs={12}>
           <Box className="customBox" style={{marginLeft: '5%',outline: '5px solid #f6c301', marginTop: '50px'}}>
             <div className='customSlot-main'>
-              <Grid container style={{ backgroundColor: 'gold', width: '90%', color:'maroon',marginBottom:'10px'}}>
+              <Grid container style={{ backgroundColor: 'gold', width: '1097px', color:'maroon',marginBottom:'10px', marginLeft: "56px"}}>
                   <div className='slot-Bar'>
                     <ul>
-                      <li className='space2'>TOTAL PARKING SLOT: <span>30</span></li>
-                      <li className='space2'>AVAILABLE PARKING SLOTS: <span>10</span></li>
-                      <li className='space2'>OCCUPIED SLOTS: <span>20</span></li>
+                      <li>TOTAL PARKING SLOT: <span className='slot-count'>30</span></li>
+                      <li>AVAILABLE PARKING SLOTS: <span className='slot-count'>10</span></li>
+                      <li>OCCUPIED SLOTS: <span className='slot-count'>20</span></li>
                     </ul>
                   </div>
               </Grid>
@@ -30,7 +30,28 @@ const ParkingSlots = () => {
                       </ul>
                     </div>
                     <Grid container className='result' style={{ backgroundColor: '#d9d9d9', width: '80%', height: '450px', marginLeft: '10px'}}>
-                      <p style={{ color: 'white' }}>SLOTS HERE</p>
+                      <div className='bldg-container'>
+                        <div className='rtl-container'>
+                          <p>RTL BLDG</p>
+                          <div className='rtl-box'></div>
+                        </div>
+                        <div className='rtl-container'>
+                          <p>NGE BLDG</p>
+                          <div className='rtl-box'></div>
+                        </div>
+                        <div className='rtl-container'>
+                          <p>GLE BLDG</p>
+                          <div className='rtl-box'></div>
+                        </div>
+                        <div className='rtl-container'>
+                          <p>BACK GATE</p>
+                          <div className='rtl-box'></div>
+                        </div>
+                        <div className='rtl-container'>
+                          <p>LIBRARY</p>
+                          <div className='rtl-box'></div>
+                        </div>
+                      </div>
                     </Grid>  
                     </div>
                   
