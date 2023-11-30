@@ -9,7 +9,7 @@ const ParkingSlots = () => {
         <Grid item xs={12}>
           <Box className="customBox" style={{marginLeft: '5%',outline: '5px solid #f6c301', marginTop: '50px'}}>
             <div className='customSlot-main'>
-              <Grid container style={{ backgroundColor: 'gold', width: '1097px', color:'maroon',marginBottom:'10px', marginLeft: "56px"}}>
+              <Grid container style={{ backgroundColor: 'gold', width: '1097px', color:'maroon',marginBottom:'10px', marginLeft: "56px", borderRadius: "25px 25px 0 0"}}>
                   <div className='slot-Bar'>
                     <ul>
                       <li>TOTAL PARKING SLOT: <span className='slot-count'>30</span></li>
@@ -29,7 +29,7 @@ const ParkingSlots = () => {
                         <li>LIBRARY</li>
                       </ul>
                     </div>
-                    <Grid container className='result' style={{ backgroundColor: '#d9d9d9', width: '80%', height: '450px', marginLeft: '10px'}}>
+                    <Grid container className='result' style={{ backgroundColor: '#d9d9d9', width: '80%', height: '550px', marginLeft: '10px'}}>
                       <div className='bldg-container'>
                         <div className='rtl-container'>
                           <p>RTL BLDG</p>

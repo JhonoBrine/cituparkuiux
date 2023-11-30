@@ -98,7 +98,7 @@ body, ul, li {
 }
 
 .nav-leftMain{
-  height: 450px;
+  height: 550px;
   width: 120px;
 
   background-color: #f6c301;
@@ -111,7 +111,7 @@ body, ul, li {
 }
 
 .bldg-container{
-  height: 450px;
+  height: 550px;
   width: 100%;
   
   display: flex;
@@ -155,9 +155,9 @@ body, ul, li {
   font-family: "OpenSauceBlack";
   color:#520000;
 
-  height: 55px;
+  height: 70px;
   width: 100%;
-  padding-top: 17px;
+  padding-top: 21%;
   border-bottom: white solid 1px;
 }
 
