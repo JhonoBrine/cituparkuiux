@@ -137,12 +137,41 @@ body, ul, li {
 
   background-color: #f6c301;
   border: #520000 1px solid;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
+
+.rtl-box button{
+  height: 40px;
+  width: 100px;
+
+  font-family: "OpenSauceBlack";
+  font-size: 1.1rem;
+  color: #520000;
+  background-color: #e1ac00;
+  border: #d09208 solid 1px;
+
+  cursor: pointer;
+}
+
+
 
 .rtl-container p{
   font-family: "OpenSauceBlack";
   color: #520000;
   margin-bottom: 10px;
+
+  font-size: 1.2rem;
+}
+
+.rtl-box p{
+  font-family: "OpenSauceBlack";
+  font-size: 1rem;
+
+  color: black;
 }
 
 .nav-leftMain ul{

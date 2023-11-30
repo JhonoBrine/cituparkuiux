@@ -33,23 +33,58 @@ const ParkingSlots = () => {
                       <div className='bldg-container'>
                         <div className='rtl-container'>
                           <p>RTL BLDG</p>
-                          <div className='rtl-box'></div>
+                          <div className='rtl-box'>
+                            <p>Available: <span style={{color: "green"}}>10</span></p>
+                            <p>Occupied: <span style={{color: "red"}}>38</span></p>
+                            <p>Total Slots: <span style={{color: "blue"}}>48</span></p>
+
+                            <button>CLOSE</button>
+                            <button>VIEW</button>
+                          </div>
                         </div>
                         <div className='rtl-container'>
                           <p>NGE BLDG</p>
-                          <div className='rtl-box'></div>
+                          <div className='rtl-box'>
+                            <p>Available: <span style={{color: "green"}}>10</span></p>
+                            <p>Occupied: <span style={{color: "red"}}>38</span></p>
+                            <p>Total Slots: <span style={{color: "blue"}}>48</span></p>
+
+                            <button>CLOSE</button>
+                            <button>VIEW</button>
+                          </div>
                         </div>
                         <div className='rtl-container'>
                           <p>GLE BLDG</p>
-                          <div className='rtl-box'></div>
+                          <div className='rtl-box'>
+                            <p>Available: <span style={{color: "green"}}>10</span></p>
+                            <p>Occupied: <span style={{color: "red"}}>38</span></p>
+                            <p>Total Slots: <span style={{color: "blue"}}>48</span></p>
+
+                            <button>CLOSE</button>
+                            <button>VIEW</button>
+                          </div>
                         </div>
                         <div className='rtl-container'>
                           <p>BACK GATE</p>
-                          <div className='rtl-box'></div>
+                          <div className='rtl-box'>
+                            <p>Available: <span style={{color: "green"}}>10</span></p>
+                            <p>Occupied: <span style={{color: "red"}}>38</span></p>
+                            <p>Total Slots: <span style={{color: "blue"}}>48</span></p>
+
+                            <button>CLOSE</button>
+                            <button>VIEW</button>
+                          </div>
                         </div>
                         <div className='rtl-container'>
                           <p>LIBRARY</p>
-                          <div className='rtl-box'></div>
+                          <div className='rtl-box'>
+                            <p>Available: <span style={{color: "green"}}>10</span></p>
+                            <p>Occupied: <span style={{color: "red"}}>38</span></p>
+                            <p>Total Slots: <span style={{color: "blue"}}>48</span></p>
+
+                            <button>CLOSE</button>
+                            <button>VIEW</button>
+                          </div>
                         </div>
                       </div>
                     </Grid>  
