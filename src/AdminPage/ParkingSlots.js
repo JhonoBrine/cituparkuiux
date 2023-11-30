@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, Box, Button } from '@mui/material';
 import './styleAdmMain/AdminStyle.css';
+import { Link, useMatch, useResolvedPath } from 'react-router-dom';
 
 const ParkingSlots = () => {
   return (
@@ -21,12 +22,13 @@ const ParkingSlots = () => {
                 <div className='slot-secondary'>
                     <div className='nav-leftMain'>
                       <ul>
-                        <li>ALL</li>
-                        <li>RTL BLDG</li>
-                        <li>NGE BLDG</li>
-                        <li>GLE BLDG</li>
-                        <li>BACK GATE</li>
-                        <li>LIBRARY</li>
+                        <CustomLink to="/admin/parking-slots">ALL</CustomLink>
+                        <CustomLink to="/admin/parking-slots/rtl">RTL BLDG</CustomLink>
+                        <CustomLink to="/admin/parking-slots/nge">NGE BLDG</CustomLink>
+                        <CustomLink to="/admin/parking-slots/gle">GLE BLDG</CustomLink>
+                        <CustomLink to="/admin/parking-slots/backgate">BACK GATE</CustomLink>
+                        <CustomLink to="/admin/parking-slots/library">LIBRARY</CustomLink>
+
                       </ul>
                     </div>
                     <Grid container className='result' style={{ backgroundColor: '#d9d9d9', width: '80%', height: '550px', marginLeft: '10px'}}>
@@ -39,7 +41,7 @@ const ParkingSlots = () => {
                             <p>Total Slots: <span style={{color: "blue"}}>48</span></p>
 
                             <button>CLOSE</button>
-                            <button>VIEW</button>
+                            <Link to="/admin/parking-slots/rtl"><button>VIEW</button></Link>
                           </div>
                         </div>
                         <div className='rtl-container'>
@@ -50,7 +52,7 @@ const ParkingSlots = () => {
                             <p>Total Slots: <span style={{color: "blue"}}>48</span></p>
 
                             <button>CLOSE</button>
-                            <button>VIEW</button>
+                            <Link to="/admin/parking-slots/nge"><button>VIEW</button></Link>
                           </div>
                         </div>
                         <div className='rtl-container'>
@@ -61,7 +63,7 @@ const ParkingSlots = () => {
                             <p>Total Slots: <span style={{color: "blue"}}>48</span></p>
 
                             <button>CLOSE</button>
-                            <button>VIEW</button>
+                            <Link to="/admin/parking-slots/gle"><button>VIEW</button></Link>
                           </div>
                         </div>
                         <div className='rtl-container'>
@@ -72,7 +74,7 @@ const ParkingSlots = () => {
                             <p>Total Slots: <span style={{color: "blue"}}>48</span></p>
 
                             <button>CLOSE</button>
-                            <button>VIEW</button>
+                            <Link to="/admin/parking-slots/backgate"><button>VIEW</button></Link>
                           </div>
                         </div>
                         <div className='rtl-container'>
@@ -83,7 +85,7 @@ const ParkingSlots = () => {
                             <p>Total Slots: <span style={{color: "blue"}}>48</span></p>
 
                             <button>CLOSE</button>
-                            <button>VIEW</button>
+                            <Link to="/admin/parking-slots/library"><button>VIEW</button></Link>
                           </div>
                         </div>
                       </div>
@@ -97,5 +99,16 @@ const ParkingSlots = () => {
     </div>
   );
 };
+
+function CustomLink({ to, children, ...props}){
+  const resolvedPath = useResolvedPath(to);
+  const isActive = useMatch({path: resolvedPath.pathname, end: false});
+  return (
+
+      <li className={isActive ? "active" : ""}>
+          <Link to={to}>{children}</Link>
+      </li>
+  )
+}
 
 export default ParkingSlots;

@@ -3,10 +3,10 @@ import { Grid, Box, Button } from '@mui/material';
 import '../styleAdmMain/AdminStyle.css';
 import { Link, useMatch, useResolvedPath } from 'react-router-dom';
 
-export default function RtlBldgPage(){
+export default function BackGatePage(){
 
     return(<>
-<div className="admin-parkingSlotsContainer">
+    <div className="admin-parkingSlotsContainer">
       <Grid container spacing={2} className="customGrid">
         <Grid item xs={12}>
           <Box className="customBox" style={{marginLeft: '5%',outline: '5px solid #f6c301', marginTop: '50px'}}>

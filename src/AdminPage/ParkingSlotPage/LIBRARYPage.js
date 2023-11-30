@@ -3,7 +3,7 @@ import { Grid, Box, Button } from '@mui/material';
 import '../styleAdmMain/AdminStyle.css';
 import { Link, useMatch, useResolvedPath } from 'react-router-dom';
 
-export default function RtlBldgPage(){
+export default function LibraryPage(){
 
     return(<>
 <div className="admin-parkingSlotsContainer">

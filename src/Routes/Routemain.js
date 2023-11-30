@@ -13,6 +13,11 @@ import CreateUser from '../AdminPage/CreateUser';
 import SearchUser from '../AdminPage/SearchUser';
 import SearchResult from '../AdminPage/SearchResult';
 import ParkingSlots from '../AdminPage/ParkingSlots';
+import RtlBldgPage from "../AdminPage/ParkingSlotPage/RTLBLDGPage";
+import NgeBldgPage from "../AdminPage/ParkingSlotPage/NGEBLDGPage";
+import GleBldgPage from "../AdminPage/ParkingSlotPage/GLEBLDGPage";
+import BackGatePage from "../AdminPage/ParkingSlotPage/BACKGATEPage";
+import LibraryPage from "../AdminPage/ParkingSlotPage/LIBRARYPage";
 export default function ParkCitRouter(){
 
     return(<>
@@ -35,6 +40,14 @@ export default function ParkCitRouter(){
                 <Route path="/admin/search-user" element={<SearchUser/>} />
                 <Route path="/admin/search-result" element={<SearchResult />}/>
                 <Route path="/admin/parking-slots" element={<ParkingSlots/>} />
+                <Route path="/admin/parking-slots" element={<Outlet/>}>
+                    <Route index element={<ParkingSlots/>}/>
+                    <Route path="/admin/parking-slots/rtl" element={<RtlBldgPage/>}/>
+                    <Route path="/admin/parking-slots/nge" element={<NgeBldgPage/>}/>
+                    <Route path="/admin/parking-slots/gle" element={<GleBldgPage/>}/>
+                    <Route path="/admin/parking-slots/backgate" element={<BackGatePage/>}/>
+                    <Route path="/admin/parking-slots/library" element={<LibraryPage/>}/>
+                </Route>
             </Route>
 
         </Routes>

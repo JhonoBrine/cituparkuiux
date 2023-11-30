@@ -102,12 +102,27 @@ body, ul, li {
   width: 120px;
 
   background-color: #f6c301;
-
+  text-decoration: none;
   display: flex;
   justify-content: space-around;
   align-items: stretch;
   flex-direction: column;
   text-align: center;
+}
+
+.nav-leftMain a{
+  color: #520000;
+  text-decoration: none;
+
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  padding: .3rem;
+  font-size: 1rem;
+}
+
+.nav-leftMain li.active{
+  border-right: #520000 7px solid;
 }
 
 .bldg-container{
