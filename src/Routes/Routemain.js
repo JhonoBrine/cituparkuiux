@@ -18,6 +18,11 @@ import NgeBldgPage from "../AdminPage/ParkingSlotPage/NGEBLDGPage";
 import GleBldgPage from "../AdminPage/ParkingSlotPage/GLEBLDGPage";
 import BackGatePage from "../AdminPage/ParkingSlotPage/BACKGATEPage";
 import LibraryPage from "../AdminPage/ParkingSlotPage/LIBRARYPage";
+import BackGateHPage from "../HomePage/ParkingLotPage/BACKGateHPage";
+import RtlBldgHPage from "../HomePage/ParkingLotPage/RTLBLDGHPage";
+import NgeBldgHPage from "../HomePage/ParkingLotPage/NGEBLDGHPage";
+import GleBldgHPage from "../HomePage/ParkingLotPage/GLEBLDGHPage";
+import LibraryHPage from "../HomePage/ParkingLotPage/LIBRARYHPage";
 export default function ParkCitRouter(){
 
     return(<>
@@ -32,7 +37,14 @@ export default function ParkCitRouter(){
                 <Route path="/home/forgotPassword" element={<HomeForgotPassword/>}/>
             </Route>
             <Route path="/about" element={<AboutPage/>}/>
-            <Route path="/parkingLotView" element={<UserParkingLotView/>}/>
+            <Route path="/parkingLotView" element={<Outlet/>}>
+                <Route index element={<UserParkingLotView/>}/>
+                <Route path="/parkingLotView/rtl" element={<RtlBldgHPage/>}></Route>
+                <Route path="/parkingLotView/nge" element={<NgeBldgHPage/>}></Route>
+                <Route path="/parkingLotView/gle" element={<GleBldgHPage/>}></Route>
+                <Route path="/parkingLotView/backgate" element={<BackGateHPage/>}></Route>
+                <Route path="/parkingLotView/library" element={<LibraryHPage/>}></Route>
+            </Route>
 
             <Route path="/admin" element={<Outlet/>}>
                 <Route index element={<App/>}/>
