@@ -5,4 +5,9 @@ Note: Might add the try/catch statements other error-handling statements after t
 
 Codes are a bit in a jumbled and need cleaning up to properly check. Each pages has its own **designated folder** so there is that.
 
+Temporary Accounts 
+
+Admin > Username: 11-1111-111 Password: admin
+Sekyu > Username: 22-2222-222 Password: sekyu _not yet implemented in the meantime_
+
 **The backend is not yet integrated into the code.**
