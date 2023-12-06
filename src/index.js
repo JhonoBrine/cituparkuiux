@@ -9,8 +9,8 @@ import ParkCitRouter from './Routes/Routemain';
 
 //fonts
 
-import '/public/fonts/OpenSauce/OpenSauceOne-Black.ttf'
-import '/public/fonts/OpenSauce/OpenSauceOne-Regular.ttf'
+import './fonts/OpenSauce/OpenSauceOne-Black.ttf'
+import './fonts/OpenSauce/OpenSauceOne-Regular.ttf'
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -25,7 +25,15 @@ export default function NavbarMain() {
             </>
           ) : storedUserType && storedUserType.userType === "sekyu" ? (
             <>
-              <ul>{/* Your sekyu links go here */}</ul>
+            <Link to="/sekyuNav">
+                <div className="site-logo"></div>
+              </Link>
+              <ul>
+              {/* <CustomLink to="/sekyu/create-user">Create User</CustomLink>*/}
+                <CustomLink to="sekyuNav/SearchUser">Search User</CustomLink>
+                <CustomLink to="/sekyu">Parking Slots</CustomLink>
+                <button onClick={handleLogout}>Logout</button>
+              </ul>
             </>
           ) : (
             <>

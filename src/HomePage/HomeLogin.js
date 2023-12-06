@@ -27,16 +27,23 @@ export default function HomeLogin(props){
         setInpPword(e.target.value);
     }
 
-    function onChangeLogin(){
-        for(let i = 0; i < user.length; i++){
-            if((inpUName === user[i].username && inpPword === user[i].password)){ 
-                localStorage.setItem("user", JSON.stringify(user[i]));
-                navigate("/admin");
-                break;
+    function onChangeLogin() {
+        for (let i = 0; i < user.length; i++) {
+          if (inpUName === user[i].username && inpPword === user[i].password) {
+            localStorage.setItem("user", JSON.stringify(user[i]));
+      
+            // Check if the user is "sekyu" and navigate accordingly
+            if (inpUName === "22-2222-222" && inpPword === "sekyu") {
+              navigate("/sekyu");
+            } else {
+              navigate("/admin");
             }
+            
+            break;
+          }
         }
-
-    }
+      }
+      
     return (<>
 
         <div className="main-container">

@@ -1,8 +1,6 @@
-
-
 import React from 'react';
 import { Grid, Box, Button } from '@mui/material';
-import './styleMain/UserParkingLotView.css';
+import './sekyuCss/sekyuParkingLotView.css';
 import { Link, useMatch, useResolvedPath } from 'react-router-dom';
 export default function UserParkingLotView(){
   return (
@@ -11,7 +9,7 @@ export default function UserParkingLotView(){
       <Grid item xs={12}>
         <Box className="customBox" style={{marginLeft: '5%',outline: '5px solid #f6c301', marginTop: '50px'}}>
           <div className='customSlot-main'>
-            <Grid container style={{ backgroundColor: 'gold', width: '1097px', color:'maroon',marginBottom:'10px', marginLeft: "56px", borderRadius: "25px 25px 0 0"}}>
+            <Grid container style={{ position: 'relative',backgroundColor: 'gold', width: '1097px', color:'maroon',marginBottom:'10px', marginLeft: "14%", borderRadius: "25px 25px 0 0"}}>
                 <div className='slot-Bar'>
                   <ul>
                     <li>TOTAL PARKING SLOT: <span className='slot-count'>30</span></li>
@@ -23,12 +21,12 @@ export default function UserParkingLotView(){
               <div className='slot-secondary'>
                   <div className='nav-leftMain'>
                     <ul>
-                        <CustomLink to="/parkingLotView">ALL</CustomLink>
-                        <CustomLink to="/parkingLotView/rtl">RTL BLDG</CustomLink>
-                        <CustomLink to="/parkingLotView/nge">NGE BLDG</CustomLink>
-                        <CustomLink to="/parkingLotView/gle">GLE BLDG</CustomLink>
-                        <CustomLink to="/parkingLotView/backgate">BACK GATE</CustomLink>
-                        <CustomLink to="/parkingLotView/library">LIBRARY</CustomLink>
+                        <CustomLink to="/sekyu">ALL</CustomLink>
+                        <CustomLink to="/sekyu/rtl">RTL BLDG</CustomLink>
+                        <CustomLink to="/sekyu/nge">NGE BLDG</CustomLink>
+                        <CustomLink to="/sekyu/gle">GLE BLDG</CustomLink>
+                        <CustomLink to="/sekyu/backgate">BACK GATE</CustomLink>
+                        <CustomLink to="/sekyu/library">LIBRARY</CustomLink>
 
                     </ul>
                   </div>
@@ -41,8 +39,8 @@ export default function UserParkingLotView(){
                           <p>Occupied: <span style={{color: "red"}}>38</span></p>
                           <p>Total Slots: <span style={{color: "blue"}}>48</span></p>
 
-                          <button>CLOSE</button>
-                          <Link to="/parkingLotView/rtl"><button>VIEW</button></Link>
+                          <button>EDIT</button>
+                          <Link to="/sekyu/rtl"><button>VIEW</button></Link>
                         </div>
                       </div>
                       <div className='rtl-container'>
@@ -52,8 +50,8 @@ export default function UserParkingLotView(){
                           <p>Occupied: <span style={{color: "red"}}>38</span></p>
                           <p>Total Slots: <span style={{color: "blue"}}>48</span></p>
 
-                          <button>CLOSE</button>
-                          <Link to="/parkingLotView/nge"><button>VIEW</button></Link>
+                          <button>EDIT</button>
+                          <Link to="/sekyu/nge"><button>VIEW</button></Link>
                         </div>
                       </div>
                       <div className='rtl-container'>
@@ -63,8 +61,8 @@ export default function UserParkingLotView(){
                           <p>Occupied: <span style={{color: "red"}}>38</span></p>
                           <p>Total Slots: <span style={{color: "blue"}}>48</span></p>
 
-                          <button>CLOSE</button>
-                          <Link to="/parkingLotView/gle"><button>VIEW</button></Link>
+                          <button>EDIT</button>
+                          <Link to="/sekyu/gle"><button>VIEW</button></Link>
                         </div>
                       </div>
                       <div className='rtl-container'>
@@ -74,8 +72,8 @@ export default function UserParkingLotView(){
                           <p>Occupied: <span style={{color: "red"}}>38</span></p>
                           <p>Total Slots: <span style={{color: "blue"}}>48</span></p>
 
-                          <button>CLOSE</button>
-                          <Link to="/parkingLotView/backgate"><button>VIEW</button></Link>
+                          <button>EDIT</button>
+                          <Link to="/sekyu/backgate"><button>VIEW</button></Link>
                         </div>
                       </div>
                       <div className='rtl-container'>
@@ -85,8 +83,8 @@ export default function UserParkingLotView(){
                           <p>Occupied: <span style={{color: "red"}}>38</span></p>
                           <p>Total Slots: <span style={{color: "blue"}}>48</span></p>
 
-                          <button>CLOSE</button>
-                          <Link to="/parkingLotView/library"><button>VIEW</button></Link>
+                          <button>EDIT</button>
+                          <Link to="/sekyu/library"><button>VIEW</button></Link>
                         </div>
                       </div>
                     </div>

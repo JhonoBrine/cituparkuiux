@@ -15,11 +15,11 @@ code {
 @font-face {
   font-family: "OpenSauceBlack";
   src: local("OpenSauceBlack"),
-   url("/public/fonts/OpenSauce/OpenSauceOne-Black.ttf") format("truetype");
+   url("/src/fonts/OpenSauce/OpenSauceOne-Black.ttf") format("truetype");
  }
 
  @font-face {
   font-family: "OpenSauceRegular";
   src: local("OpenSauceRegular"),
-   url("/public/fonts/OpenSauce/OpenSauceOne-Regular.ttf") format("truetype");
+   url("/src/fonts/OpenSauce/OpenSauceOne-Regular.ttf") format("truetype");
  }

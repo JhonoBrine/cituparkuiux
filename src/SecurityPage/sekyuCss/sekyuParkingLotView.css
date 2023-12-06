@@ -1,0 +1,544 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body, ul, li {
+    margin: 0;
+    padding: 0;
+   }
+  
+  .admin-container,.admin-createuserContainer, .admin-searchResultContainer,
+  .admin-searchUserContainer, .admin-parkingSlotsContainer{
+    height: 810px;
+    width: 100%;
+    background-color: #520000;
+    border-top: 1px solid white;
+  }
+  
+  .Topbar{
+    width: 100%;
+    display: flex;
+    object-fit: fill;
+  }
+  .Logo{
+    height: 80px;
+    /* margin-right: 10px; */
+    background-color: gold;
+    width:160px;
+  }
+  .Building{
+    width: 5000px;
+    height: 80px;
+    object-fit: fill;
+  }
+  .navBar{
+    background-color: gold;
+  }
+  .customGrid {
+    margin-top: 20px;
+  }
+  
+  .customBox {
+    background-color: maroon;
+    width: 90%;
+    margin-left: 5%;
+    height: 700px;
+    position: absolute;
+    box-shadow: 10px 10px;
+  }
+  
+  .customBox-main{
+    margin-top: 7%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  
+  }
+  
+  .resTitleBar-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+    background-color: #f6c301;
+    width: 80%;
+    height: 35px;
+    margin-left: 10%;
+  
+  }
+  
+  .resTitleBar-container ul {
+    padding: 8px;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 13.3rem;
+  
+    font-size: 13pt;
+    color: maroon;
+    font-family: "OpenSauceBlack";
+  }
+  
+  .resTitleBar-container a{
+    color: inherit;
+    text-decoration: none;
+  
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: .3rem;
+    font-size: 1rem;
+  }
+  .result-container{
+    margin-left: 10%;
+    height: 500px;
+    width: 80%;
+    background-color: #d9d9d9;
+    border: #f6c301 3px solid;
+  
+    display: flex;
+    justify-content: space-between;
+  
+    
+  
+  }
+  
+  .result-container ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    font-size: 10pt;
+    color: maroon;
+    font-family: "OpenSauceBlack";
+  
+  }
+  
+  .result-container li{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  
+    height: 30px; 
+    width: 960px;
+  
+    background-color: white;
+  }
+  
+  
+  /* .result-item{
+    width: 100%;
+    height: 40px;
+    margin-top: 5px;
+    background-color: white; 
+  } */
+  
+  .campus{
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+  }
+  .admin{
+    margin-top: 10px;
+    margin-left: 88%;
+    background-color: transparent;
+    position: absolute;
+    color: white;
+    font-weight: bolder;
+    font-size: 40px;
+  }
+  .TextField {
+    justify-content: center;
+    margin-top: 100px;
+    text-align: center;
+    border-color: transparent;
+  }
+  
+  .TextField input{
+    background-color: whitesmoke;
+    padding-bottom: 20px;
+    /* margin-bottom: 20px; */
+    text-align: center;
+    width: 800px;
+    border-radius: 10px 10px 10px 10px;
+    font-weight: bolder;
+  }
+  .test{
+    margin-bottom: 20px;
+  
+  }
+  .buttons{
+    display: flex;
+    color: maroon;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 22%;
+    margin-right: 22%;
+    margin-top: 10px;
+  }
+  .HomeGrid{
+    background-color: maroon;
+    margin-left: 10%;
+    height: 700px;
+    position: absolute;
+  }
+  .space{
+    margin-right: 20%;
+    margin-left: 10px;
+    font-weight: bolder;
+    font-size: 20px;
+  }
+  /* .SRCancel{
+    margin-left: 45%;
+  } */
+  .space2{
+    margin-right: 5%;
+    margin-left: 10px;
+    font-weight: bolder;
+    font-size: 20px;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  
+  body, ul, li {
+    margin: 0;
+    padding: 0;
+   }
+  
+  .admin-container,.admin-createuserContainer, .admin-searchResultContainer,
+  .admin-searchUserContainer, .admin-parkingSlotsContainer{
+    height: 810px;
+    width: 100%;
+    background-color: #520000;
+    border-top: 1px solid white;
+  }
+  
+  .Topbar{
+    width: 100%;
+    display: flex;
+    object-fit: fill;
+  }
+  .Logo{
+    height: 80px;
+    /* margin-right: 10px; */
+    background-color: gold;
+    width:160px;
+  }
+  .Building{
+    width: 5000px;
+    height: 80px;
+    object-fit: fill;
+  }
+  .navBar{
+    background-color: gold;
+  }
+  .customGrid {
+    margin-top: 20px;
+  }
+  
+  .customBox {
+    background-color: maroon;
+    width: 90%;
+    margin-left: 5%;
+    height: 700px;
+    position: absolute;
+    box-shadow: 10px 10px;
+  }
+  
+  .customBox-main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  
+  }
+  .customSlot-main{
+    margin-top: 4%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+  
+  }
+  
+  .slot-Bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 1097px;
+    height: 50px;
+  
+    font-family: "OpenSauceBlack";
+    color: #520000;
+  
+    
+  }
+  .slot-Bar ul{
+    text-decoration: none;
+    list-style: none;
+  
+    display: flex;
+    justify-content: space-evenly;
+  
+    font-size: 1.3rem;
+    gap: 50px;
+  }
+  
+  .slot-count{
+    background-color: white;
+    width: 100%;
+    height: 100%;
+  }
+  .slot-secondary{
+  
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+  }
+  
+  .nav-leftMain{
+    height: 550px;
+    width: 120px;
+  
+    background-color: #f6c301;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .nav-leftMain a{
+    color: #520000;
+    text-decoration: none;
+  
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    padding: .3rem;
+    font-size: 1rem;
+  }
+  
+  .nav-leftMain li.active{
+    border-right: #520000 7px solid;
+  }
+  
+  .bldg-container{
+    height: 550px;
+    width: 100%;
+    
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+  
+    /* gap: 2rem; */
+  }
+  
+  .rtl-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  
+  }
+  .rtl-box{
+    height: 300px;
+    width: 140px;
+  
+    background-color: #f6c301;
+    border: #520000 3px solid;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  
+  .rtl-box button{
+    height: 40px;
+    width: 100px;
+  
+    font-family: "OpenSauceBlack";
+    font-size: 1.1rem;
+    color: #520000;
+    background-color: #e1ac00;
+    border: #d09208 solid 1px;
+  
+    cursor: pointer;
+  }
+  
+  
+  
+  .rtl-container p{
+    font-family: "OpenSauceBlack";
+    color: #520000;
+    margin-bottom: 10px;
+  
+    font-size: 1.2rem;
+  }
+  
+  .rtl-box p{
+    font-family: "OpenSauceBlack";
+    font-size: 1rem;
+  
+    color: black;
+  }
+  
+  .nav-leftMain ul{
+    text-decoration: none;
+    list-style: none;
+  
+  }
+  
+  .nav-leftMain li{
+    font-family: "OpenSauceBlack";
+    color:#520000;
+  
+    height: 70px;
+    width: 100%;
+    padding-top: 21%;
+    border-bottom: white solid 1px;
+  }
+  
+  .nav-leftMain li:nth-child(n+6){
+    border-bottom: none;
+  }
+  
+  .resTitleBar-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+    background-color: #f6c301;
+    width: 80%;
+    height: 35px;
+    margin-left: 10%;
+  
+  }
+  
+  .resTitleBar-container ul {
+    padding: 8px;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 13.3rem;
+  
+    font-size: 13pt;
+    color: maroon;
+    font-family: "OpenSauceBlack";
+  }
+  
+  .resTitleBar-container a{
+    color: inherit;
+    text-decoration: none;
+  
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: .3rem;
+    font-size: 1rem;
+  }
+  .result-container{
+    margin-left: 10%;
+    height: 500px;
+    width: 80%;
+    background-color: #d9d9d9;
+    border: #f6c301 3px solid;
+  
+    display: flex;
+    justify-content: space-between;
+  
+  }
+  
+  .result-container ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    font-size: 10pt;
+    color: maroon;
+    font-family: "OpenSauceBlack";
+  
+  }
+  
+  .result-container li{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  
+    height: 30px; 
+    width: 960px;
+  
+    background-color: white;
+  }
+  
+  
+  /* .result-item{
+    width: 100%;
+    height: 40px;
+    margin-top: 5px;
+    background-color: white; 
+  } */
+  
+  .campus{
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+  }
+  .admin{
+    margin-top: 10px;
+    margin-left: 88%;
+    background-color: transparent;
+    position: absolute;
+    color: white;
+    font-weight: bolder;
+    font-size: 40px;
+  }
+  .TextField {
+    justify-content: center;
+    margin-top: 100px;
+    text-align: center;
+    border-color: transparent;
+  }
+  
+  .TextField input{
+    background-color: whitesmoke;
+    padding-bottom: 20px;
+    /* margin-bottom: 20px; */
+    text-align: center;
+    width: 800px;
+    border-radius: 10px 10px 10px 10px;
+    font-weight: bolder;
+  }
+  .test{
+    margin-bottom: 20px;
+  
+  }
+  .buttons{
+    display: flex;
+    color: maroon;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 22%;
+    margin-right: 22%;
+    margin-top: 10px;
+  }
+  .HomeGrid{
+    background-color: maroon;
+    margin-left: 10%;
+    height: 700px;
+    position: absolute;
+  }
+  .space{
+    margin-right: 20%;
+    margin-left: 10px;
+    font-weight: bolder;
+    font-size: 20px;
+  }
+  /* .SRCancel{
+    margin-left: 45%;
+  } */
+  .Usertype-popup{
+    font-weight: bolder;
+  }
