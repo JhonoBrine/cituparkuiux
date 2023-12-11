@@ -25,6 +25,8 @@ const SearchUser = () => {
   };
 
   const handleSearchUser = () => {
+    // Retrieve all users
+    
     let userTypeToSearch = null;
 
     // Map the selected userType to its corresponding ID
@@ -44,8 +46,6 @@ const SearchUser = () => {
       default:
         userTypeToSearch = null;
     }
-
-    // Check if both searchUser and userType are empty
     if (!searchUser && !userTypeToSearch) {
       // If both are empty, retrieve all users
       axios.get(`http://localhost:8080/users`)
@@ -59,15 +59,23 @@ const SearchUser = () => {
         });
     } else if (!searchUser && userTypeToSearch) {
       // If searchUser is empty and userType is selected, retrieve users based on userType
-      axios.get(`http://localhost:8080/user-types/${userTypeToSearch}`)
-        .then(response => {
-          const users = response.data;
-          console.log(`Users of type ${userType}:`, users);
-          console.log("Success!!");
-        })
-        .catch(error => {
-          console.error(`Error retrieving ${userType} users:`, error);
-        });
+          axios.get(`http://localhost:8080/users`)
+      .then(response => {
+        const allUsers = response.data;
+
+        // Filter users based on the selected user type, if any
+        let filteredUsers = allUsers;
+        if (userType) {
+          filteredUsers = allUsers.filter(user => user.userType.userType === userType);
+        }
+
+        // Display or process the filteredUsers as needed
+        console.log(filteredUsers);
+        console.log("Success!!");
+      })
+      .catch(error => {
+        console.error('Error retrieving all users:', error);
+      });
     } else {
       // If either searchUser or userType is not empty, perform the search
       axios.get(`http://localhost:8080/users/search/${searchUser}`)
