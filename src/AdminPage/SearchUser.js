@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Grid, Box, TextField, Button, Popover, List, ListItem, ListItemText } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './styleAdmMain/AdminStyle.css';
 import './AppBar.js';
 
@@ -24,14 +25,77 @@ const SearchUser = () => {
   };
 
   const handleSearchUser = () => {
-    navigate('/admin/search-result');
+    // Retrieve all users
+    
+    let userTypeToSearch = null;
+
+    // Map the selected userType to its corresponding ID
+    switch (userType) {
+      case 'STUDENT':
+        userTypeToSearch = 1;
+        break;
+      case 'EMPLOYEE':
+        userTypeToSearch = 2;
+        break;
+      case 'SECURITY GUARD':
+        userTypeToSearch = 3;
+        break;
+      case 'ADMIN':
+        userTypeToSearch = 4;
+        break;
+      default:
+        userTypeToSearch = null;
+    }
+    if (!searchUser && !userTypeToSearch) {
+      // If both are empty, retrieve all users
+      axios.get(`http://localhost:8080/users`)
+        .then(response => {
+          const users = response.data;
+          console.log("All Users:", users);
+          console.log("Success!!");
+        })
+        .catch(error => {
+          console.error('Error retrieving all users:', error);
+        });
+    } else if (!searchUser && userTypeToSearch) {
+      // If searchUser is empty and userType is selected, retrieve users based on userType
+          axios.get(`http://localhost:8080/users`)
+      .then(response => {
+        const allUsers = response.data;
+
+        // Filter users based on the selected user type, if any
+        let filteredUsers = allUsers;
+        if (userType) {
+          filteredUsers = allUsers.filter(user => user.userType.userType === userType);
+        }
+
+        // Display or process the filteredUsers as needed
+        console.log(filteredUsers);
+        console.log("Success!!");
+      })
+      .catch(error => {
+        console.error('Error retrieving all users:', error);
+      });
+    } else {
+      // If either searchUser or userType is not empty, perform the search
+      axios.get(`http://localhost:8080/users/search/${searchUser}`)
+        .then(response => {
+          const user = response.data;
+          // Open a dialog or any other way to display the search results
+          console.log("User Details:", user);
+          console.log("Success!!");
+        })
+        .catch(error => {
+          console.error('Error searching user:', error);
+        });
+    }
   };
 
   return (
     <div className="admin-searchUserContainer">
       <Grid container spacing={2} className="customGrid">
         <Grid item xs={12}>
-          <Box className="customBox" style={{marginLeft: '5%', marginTop: '50px',outline: '5px solid #f6c301'}}>
+          <Box className="customBox" style={{ marginLeft: '5%', marginTop: '50px', outline: '5px solid #f6c301' }}>
             <div className='TextField'>
               <div className='test'>
                 <TextField
@@ -78,7 +142,7 @@ const SearchUser = () => {
               <Grid item>
                 <Button
                   className='SUSearch'
-                  style={{ backgroundColor: 'gold', marginLeft:'100px'}}
+                  style={{ backgroundColor: 'gold', marginLeft: '100px' }}
                   variant="contained"
                   onClick={handleSearchUser}
                 >
@@ -88,7 +152,7 @@ const SearchUser = () => {
               <Grid item>
                 <Button
                   className='SUCancel'
-                  style={{ backgroundColor: 'gold', color: 'maroon', fontWeight: 'bolder', marginRight:'100px'}}
+                  style={{ backgroundColor: 'gold', color: 'maroon', fontWeight: 'bolder', marginRight: '100px' }}
                   variant="contained"
                 >
                   CANCEL
