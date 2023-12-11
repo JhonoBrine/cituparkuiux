@@ -5,6 +5,7 @@ Note: Might add the try/catch statements other error-handling statements after t
 
 Codes are a bit in a jumbled and need cleaning up to properly check. Each pages has its own **designated folder** so there is that.
 
+EDIT UPDATE: SekyuPage added by @CroseaMars, API Integration is not yet commenced will start soon this week _(__preferably this Thursday till Monday, any help is greatly appreciated)_
 Temporary Accounts 
 
 Admin > Username: 11-1111-111 Password: admin
