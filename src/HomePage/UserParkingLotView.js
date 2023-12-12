@@ -41,6 +41,7 @@ export default function UserParkingLotView(){
                           <p>Occupied: <span style={{color: "red"}}>38</span></p>
                           <p>Total Slots: <span style={{color: "blue"}}>48</span></p>
 
+                          <button>CLOSE</button>
                           <Link to="/parkingLotView/rtl"><button>VIEW</button></Link>
                         </div>
                       </div>
@@ -51,6 +52,7 @@ export default function UserParkingLotView(){
                           <p>Occupied: <span style={{color: "red"}}>38</span></p>
                           <p>Total Slots: <span style={{color: "blue"}}>48</span></p>
 
+                          <button>CLOSE</button>
                           <Link to="/parkingLotView/nge"><button>VIEW</button></Link>
                         </div>
                       </div>
@@ -61,6 +63,7 @@ export default function UserParkingLotView(){
                           <p>Occupied: <span style={{color: "red"}}>38</span></p>
                           <p>Total Slots: <span style={{color: "blue"}}>48</span></p>
 
+                          <button>CLOSE</button>
                           <Link to="/parkingLotView/gle"><button>VIEW</button></Link>
                         </div>
                       </div>
@@ -71,6 +74,7 @@ export default function UserParkingLotView(){
                           <p>Occupied: <span style={{color: "red"}}>38</span></p>
                           <p>Total Slots: <span style={{color: "blue"}}>48</span></p>
 
+                          <button>CLOSE</button>
                           <Link to="/parkingLotView/backgate"><button>VIEW</button></Link>
                         </div>
                       </div>
@@ -81,6 +85,7 @@ export default function UserParkingLotView(){
                           <p>Occupied: <span style={{color: "red"}}>38</span></p>
                           <p>Total Slots: <span style={{color: "blue"}}>48</span></p>
 
+                          <button>CLOSE</button>
                           <Link to="/parkingLotView/library"><button>VIEW</button></Link>
                         </div>
                       </div>
