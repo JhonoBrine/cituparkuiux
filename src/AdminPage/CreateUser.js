@@ -46,7 +46,7 @@ export default function CreateUser() {
 
     setSelectedUserType(selectedType);
     
-    setStickerId('');
+    setStickerId(''); // Track the selected user type ID
     handleClose();
   };
   
@@ -101,6 +101,7 @@ export default function CreateUser() {
     console.error('Server response:', error.response);
   })
   .finally(() => {
+    // Clear the text fields after the request completes (either success or failure)
     setFirstName("");
     setMiddleName("");
     setLastName("");
