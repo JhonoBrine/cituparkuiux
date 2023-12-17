@@ -6,13 +6,15 @@ export default function HomeLogin(props){
     const [inpUName, setInpUName] = useState("");
     const [inpPword, setInpPword] = useState("");
     const [user, setUser] = useState([
-        {username: "11-1111-111",
-         password: "admin",
-         userType: "admin"
+        {
+          username: "11-1111-111",
+          password: "admin",
+          userType: "admin"
         },
-        {username: "22-2222-222",
-         password: "sekyu",
-         userType: "sekyu"
+        {
+          username: "22-2222-222",
+          password: "sekyu",
+          userType: "sekyu"
         },
     ])
 
@@ -29,6 +31,7 @@ export default function HomeLogin(props){
         navigate(`/${storedUser.userType}`);
       }
     }, [navigate])
+
     function handleInputUser(e){
         setInpUName(e.target.value);
     }

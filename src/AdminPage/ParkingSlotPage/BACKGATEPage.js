@@ -7,6 +7,14 @@ import '../styleAdmMain/AdminStyle.css';
 export default function BackGatePage(){
     const [parkingSlots, setParkingSlots] = useState([{}])
     const [specParkingLot, setSpecParkingLot] = useState([{}])
+
+    const [is_available, setIs_available] = useState(true);
+    const [avail_able, setAvail_able] = useState(true);
+
+    const [is_employee, setIs_employee] = useState(false);
+    const [emp_loyee, setEmp_loyee] = useState(false);
+
+    const [isModalOpen, setModalOpen] = useState(false);
     {/*Fetched Data for Parking Lots */}
 
     useEffect(() => {
@@ -29,6 +37,7 @@ export default function BackGatePage(){
         console.error("Error fetching parking data: ", error);
       })
     }
+
     const fetchParkingSlotData = () => {
       axios.get('http://localhost:8080/parking-slots')
       .then((response) => {
@@ -52,24 +61,42 @@ export default function BackGatePage(){
     }
 
     const createNewParkingSlots = () => {
-
       const newSlotData = {
-        available: !(prop.available),
-        employee: prop.employee,
-        isAvailable: !(prop.isAvailable),
-        isEmployee: prop.isEmployee,
+        available: true,
+        employee: false,
+        isAvailable: true,
+        isEmployee: false,
         parkingLot: {
-          parkingLotID: specParkingLot.parkingLotID,
-          parkingLotName: specParkingLot.parkingLotName,
-          parkingSlotTotal: specParkingLot.parkingSlotTotal,
-          parkingSlotAvailable: specParkingLot.parkingSlotAvailable
+          parkingLotID: specParkingLot[0].parkingLotID,
+          parkingLotName: specParkingLot[0].parkingLotName,
+          parkingSlotTotal: specParkingLot[0].parkingSlotTotal,
+          parkingSlotAvailable: specParkingLot[0].parkingSlotAvailable
         }
       }
 
       axios.post('http://localhost:8080/parking-slots', newSlotData)
       .then((response) => {
         console.log("Create a new parking slot", response.data)
+        fetchParkingSlotData();
       })
+      .catch((error) => {
+        console.error("Error creating new parking slot:", error);
+      })
+      .finally(() => {
+        setIs_available(false);
+        setAvail_able(false);
+        setIs_employee(false);
+        setEmp_loyee(false);
+        closeModal();
+      })
+    }
+
+    const openModal = () => {
+      setModalOpen(true);
+    }
+
+    const closeModal = () => {
+      setModalOpen(false);
     }
     
     const handleUpdateParkingSlots = (id, updatedData) => {
@@ -84,7 +111,7 @@ export default function BackGatePage(){
 
     }
     const handleDeleteParkingSlots = (id) => {
-      const confirmed = window.confirm("Are you sure you want to delete this parking slot?");
+      const confirm = window.confirm("Are you sure you want to delete this parking slot?");
       if(confirm){
         axios.delete(`http://localhost:8080/parking-slots/${id}`)
           .then((response) => {
@@ -165,7 +192,7 @@ export default function BackGatePage(){
                     <Grid container className='result' style={{ backgroundColor: '#d9d9d9', width: '80%', height: '550px', marginLeft: '10px'}}>
                       <div className='parking-slot-main-container'>
                       <div className='add-btn'>
-                        <button>Create New Parking Slot</button>
+                        <button onClick={() => { createNewParkingSlots();}}>Create New Parking Slot</button>
                       </div>
 
                       <div className='parking-slot-another-container'>
@@ -215,6 +242,9 @@ export default function BackGatePage(){
         </Grid>
       </Grid>
     </div>
+
+    <div>
+    </div>
   </>);
 };
 
@@ -228,3 +258,18 @@ function CustomLink({ to, children, ...props}){
       </li>
   )
 }
+
+const Modal = ({ isOpen, onClose, children }) => {
+  const modalStyle = {
+      display: isOpen ? 'block' : 'none',
+  };
+
+  return (
+  <div className="modal" style={modalStyle}>
+      <div className="modal-content">
+          <span className="close" onClick={onClose}>&times;</span>
+          {children}
+      </div>
+  </div>
+  );
+};
