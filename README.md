@@ -18,5 +18,7 @@ Sekyu > Username: 22-2222-222 Password: sekyu _not yet implemented in the meanti
 If you want to use the UI, make sure the API is on and also
 
 Populate these two first.
+
+
 ![image](https://github.com/JhonoBrine/cituparkuiux/assets/86846794/837f2f45-628f-44d4-99ca-a6c6915e9691)
 ![image](https://github.com/JhonoBrine/cituparkuiux/assets/86846794/9374066f-88a4-48ef-bdef-8ad221df58dc)
