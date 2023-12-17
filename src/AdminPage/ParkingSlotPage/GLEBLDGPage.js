@@ -6,7 +6,6 @@ import { Link, useMatch, useResolvedPath } from 'react-router-dom';
 import '../styleAdmMain/AdminStyle.css';
 
 export default function GleBldgPage(){
-
   const [parkingSlots, setParkingSlots] = useState([{}])
   const [specParkingLot, setSpecParkingLot] = useState([{}])
 
@@ -17,28 +16,36 @@ export default function GleBldgPage(){
   const [emp_loyee, setEmp_loyee] = useState(false);
 
   const [isModalOpen, setModalOpen] = useState(false);
+
+  const [totalAvailable, setTotalAvailable] = useState(0);
+	const [total_slot, setTotal_slot] = useState(0);
+
   {/*Fetched Data for Parking Lots */}
 
   useEffect(() => {
     fetchParkingSlotData();
-    console.log("Parking Slots = BackGate: ", parkingSlots)
     fetchParkingLotData();
-  }, [])
+  }, []);
+  
 
-  const fetchParkingLotData = () => {
-    axios.get('http://localhost:8080/parkinglots')
-    .then((response) => {
-      const temp_slots = response.data
-      const filteredSlots = temp_slots.filter(slot => slot && slot.parkingLotID === 3);
-
-
+  const fetchParkingLotData = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/parkinglots');
+      const temp_slots = response.data;
+      const filteredSlots = temp_slots.filter((slot) => slot && slot.parkingLotID === 3);
+  
+      const totalSlots = filteredSlots.reduce((accumulator, lot) => accumulator + lot.parkingSlotTotal, 0);
+      const availableSlots = filteredSlots.reduce((accumulator, lot) => accumulator + lot.parkingSlotAvailable, 0);
+  
+      setTotalAvailable(availableSlots);
+      setTotal_slot(totalSlots);
       setSpecParkingLot(filteredSlots);
+  
       console.log("Fetched Data: ", filteredSlots);
-    })
-    .catch((error) => {
+    } catch (error) {
       console.error("Error fetching parking data: ", error);
-    })
-  }
+    }
+  };
 
   const fetchParkingSlotData = () => {
     axios.get('http://localhost:8080/parking-slots')
@@ -56,6 +63,7 @@ export default function GleBldgPage(){
     }
 
     setParkingSlots(filteredSlots);
+    
     })
     .catch((error) => {
       console.error("Error fetching parking slots data: ", error);
@@ -80,6 +88,7 @@ export default function GleBldgPage(){
     .then((response) => {
       console.log("Create a new parking slot", response.data)
       fetchParkingSlotData();
+      fetchParkingLotData();
     })
     .catch((error) => {
       console.error("Error creating new parking slot:", error);
@@ -106,10 +115,15 @@ export default function GleBldgPage(){
       .then((response) => {
         console.log("This slot has been updated!");
         fetchParkingSlotData();
+        fetchParkingLotData();
       })
       .catch((error) => {
         console.error("Error updating parking slot: ", error);
-  });
+      })
+      .finally(() => {
+        fetchParkingSlotData();
+        fetchParkingLotData();
+      });
 
   }
   const handleDeleteParkingSlots = (id) => {
@@ -118,10 +132,14 @@ export default function GleBldgPage(){
       axios.delete(`http://localhost:8080/parking-slots/${id}`)
         .then((response) => {
           console.log("A slot has been deleted");
-          fetchParkingSlotData();
+
         })
         .catch((error) => {
           console.error("Error deleting parking slot: ", error);
+        })
+        .finally(() => {
+          fetchParkingSlotData();
+          fetchParkingLotData();
         })
     }
   }
@@ -141,6 +159,8 @@ export default function GleBldgPage(){
       parkingSlotID: prop.parkingSlotID
     }
     handleUpdateParkingSlots(prop.parkingSlotID, updatedSlotData);
+    setTotalAvailable(updatedSlotData.parkingLot.parkingSlotAvailable);
+    setTotal_slot(updatedSlotData.parkingLot.parkingSlotTotal);
   };
 
   const handleToggleEmployee = (prop) => {
@@ -161,6 +181,8 @@ export default function GleBldgPage(){
         parkingSlotID: prop.parkingSlotID
       }
       handleUpdateParkingSlots(prop.parkingSlotID, updatedSlotData);
+      setTotalAvailable(updatedSlotData.parkingLot.parkingSlotAvailable);
+    setTotal_slot(updatedSlotData.parkingLot.parkingSlotTotal);
     }
   };
 
@@ -173,9 +195,9 @@ export default function GleBldgPage(){
             <Grid container style={{ backgroundColor: 'gold', width: '1097px', color:'maroon',marginBottom:'10px', marginLeft: "56px", borderRadius: "25px 25px 0 0"}}>
                 <div className='slot-Bar'>
                   <ul>
-                    <li>TOTAL PARKING SLOT: <span className='slot-count'>30</span></li>
-                    <li>AVAILABLE PARKING SLOTS: <span className='slot-count'>10</span></li>
-                    <li>OCCUPIED SLOTS: <span className='slot-count'>20</span></li>
+                      <li>TOTAL PARKING SLOT: <span className='slot-count'>{total_slot}</span></li>
+											<li>AVAILABLE PARKING SLOTS: <span className='slot-count'>{totalAvailable}</span></li>
+											<li>OCCUPIED SLOTS: <span className='slot-count'>{total_slot - totalAvailable}</span></li>
                   </ul>
                 </div>
             </Grid>

@@ -29,42 +29,30 @@ const ParkingSlots = () => {
 		fetchParkingSlotData();
 	}, []);
 
-	useEffect(() => {
-		const totalSlots = parkingLots.reduce((accumulator, lot) => accumulator + lot.parkingSlotTotal, 0);
-		const availableSlots = parkingLots.reduce((accumulator, lot) => accumulator + lot.parkingSlotAvailable, 0);
+	const fetchParkingLotData = async () => {
+		try {
+			const response = await axios.get('http://localhost:8080/parkinglots')
+			const parkLotData = response.data;
 
-		setTotalAvailable(availableSlots);
-		setTotal_slot(totalSlots);
-	}, [parkingLots])
+			setParkingLots(parkLotData);
+			console.log("Fetched Data: ", parkLotData);
 
-const fetchParkingLotData = () => {
-	axios.get('http://localhost:8080/parkinglots')
-		.then((response) => {
-			setParkingLots(response.data);
-			console.log("Fetched Data: ", response.data);
-			calculateAvailableSlots(response.data);
-		})
-		.catch((error) => {
-			console.error("Error fetching parking data: ", error);
-		})
-}
+			//it calculates the available slots after fetching parking lot data
+			await calculateAvailableSlots(parkLotData);
+
+			//This calculates the sum of all parkingSlotTotal and parkingSlotAvailable
+			const totalSlots = parkLotData.reduce((accumulator, lot) => accumulator + lot.parkingSlotTotal, 0);
+			const availableSlots = parkLotData.reduce((accumulator, lot) => accumulator + lot.parkingSlotAvailable, 0);
+
+			//stores the variables above into this state
+			setTotalAvailable(availableSlots);
+			setTotal_slot(totalSlots);
+		} catch (error) {
+			console.error("Error fetching parking data: ", error)
+		}
+	}
 
 // It calculates the available slots by fetching the parkinglots
-
-// const calculateAvailableSlots = (parkingLots) => {
-//   const counts = {};
-//   parkingLots.forEach((lot) => {
-//     axios.get(`http://localhost:8080/parkinglots/available-slots/${lot.parkingLotID}`)
-//       .then((response) => {
-//         console.log("Fetch Available Slot Data: ", response.data)
-//         counts[lot.parkingLotID] = response.data.length;
-//         setSlotAvailableCounts({ ...counts });
-//       })
-//       .catch((error) => {
-//         console.error("Error fetching available slot data: ", error);
-//       });
-//   });
-// }
 
 const calculateAvailableSlots = async (parkingLots) => {
 	const counts = {};

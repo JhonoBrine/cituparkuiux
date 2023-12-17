@@ -63,7 +63,6 @@ body{
 .text-outlier{
     padding-left: 5rem;
     padding-top: 1rem;
-    border: 1px white solid;
 }
 
 .titlePart1{
@@ -76,7 +75,6 @@ body{
 }
 
 .login-container{
-    border: 1px orange solid;
     margin-top: 2rem;
     margin-right: 5rem;
     height: 500px;
@@ -88,19 +86,16 @@ body{
 }
 
 .login-text{
-    border: 1px orange solid;
     margin-top: 1.5rem;
     font-size: 2rem;
 }
 
 .signIn-text{
-    border: 1px orange solid;
     margin-bottom: 4rem;
     color: grey;
 }
 
 .text-u{
-    border: 1px orange solid;
     padding-left: 1.5rem;
     margin-bottom: 5px;
     color: grey;
@@ -146,7 +141,6 @@ body{
 }
 
 .forgor-text{
-    border: 1px orange solid;
     color: grey;
 }
 
