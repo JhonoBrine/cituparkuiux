@@ -1,6 +1,6 @@
-import { Link, useNavigate } from "react-router-dom"
-import "./styleMain/HomeLogin.css"
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "./styleMain/HomeLogin.css";
 
 export default function HomeLogin(props){
     const [inpUName, setInpUName] = useState("");
@@ -16,9 +16,19 @@ export default function HomeLogin(props){
         },
     ])
 
+    let isValidUser = false;
+
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     console.log(props.user);
     const navigate = useNavigate();
+
+    useEffect(() => {
+      const storedUser = JSON.parse(localStorage.getItem("user"))
+      if(storedUser) {
+        setIsLoggedIn(true);
+        navigate(`/${storedUser.userType}`);
+      }
+    }, [navigate])
     function handleInputUser(e){
         setInpUName(e.target.value);
     }
@@ -30,18 +40,22 @@ export default function HomeLogin(props){
     function onChangeLogin() {
         for (let i = 0; i < user.length; i++) {
           if (inpUName === user[i].username && inpPword === user[i].password) {
-            localStorage.setItem("user", JSON.stringify(user[i]));
-      
             // Check if the user is "sekyu" and navigate accordingly
             if (inpUName === "22-2222-222" && inpPword === "sekyu") {
+              localStorage.setItem("user", JSON.stringify(user[i]));
               navigate("/sekyu");
-            } else {
+            } else if (inpUName === "11-1111-111" && inpPword === "admin"){
+              localStorage.setItem("user", JSON.stringify(user[i]));
               navigate("/admin");
             }
             
+            isValidUser = true;
             break;
           }
         }
+        if (!isValidUser) {
+          alert("Invalid username or password. Please try again.");
+      }
       }
       
     return (<>

@@ -1,9 +1,139 @@
-import React from 'react';
-import { Grid, Box, Button } from '@mui/material';
-import '../styleAdmMain/AdminStyle.css';
+import { Box, Grid } from '@mui/material';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { Link, useMatch, useResolvedPath } from 'react-router-dom';
+import '../styleAdmMain/AdminStyle.css';
 
 export default function BackGatePage(){
+    const [parkingSlots, setParkingSlots] = useState([{}])
+    const [specParkingLot, setSpecParkingLot] = useState([{}])
+    {/*Fetched Data for Parking Lots */}
+
+    useEffect(() => {
+      fetchParkingSlotData();
+      console.log("Parking Slots = BackGate: ", parkingSlots)
+      fetchParkingLotData();
+    }, [])
+
+    const fetchParkingLotData = () => {
+      axios.get('http://localhost:8080/parkinglots')
+      .then((response) => {
+        const temp_slots = response.data
+        const filteredSlots = temp_slots.filter(slot => slot && slot.parkingLotID === 4);
+
+
+        setSpecParkingLot(filteredSlots);
+        console.log("Fetched Data: ", filteredSlots);
+      })
+      .catch((error) => {
+        console.error("Error fetching parking data: ", error);
+      })
+    }
+    const fetchParkingSlotData = () => {
+      axios.get('http://localhost:8080/parking-slots')
+      .then((response) => {
+        console.log("Fetched Slot Data: ", response.data);
+        const temp_slots = response.data;
+
+      // Filter the parking slots based on parkingLotID === 4
+      const filteredSlots = temp_slots.filter(slot => slot.parkingLot && slot.parkingLot.parkingLotID === 4);
+
+      // Assuming you want to get parkingLotID from the first filtered slot
+      if (filteredSlots.length > 0 && filteredSlots[0].parkingLot) {
+        const hold_slot = filteredSlots[0].parkingLot.parkingLotID;
+        console.log("Lot ID: ", hold_slot);
+      }
+
+      setParkingSlots(filteredSlots);
+      })
+      .catch((error) => {
+        console.error("Error fetching parking slots data: ", error);
+      })
+    }
+
+    const createNewParkingSlots = () => {
+
+      const newSlotData = {
+        available: !(prop.available),
+        employee: prop.employee,
+        isAvailable: !(prop.isAvailable),
+        isEmployee: prop.isEmployee,
+        parkingLot: {
+          parkingLotID: specParkingLot.parkingLotID,
+          parkingLotName: specParkingLot.parkingLotName,
+          parkingSlotTotal: specParkingLot.parkingSlotTotal,
+          parkingSlotAvailable: specParkingLot.parkingSlotAvailable
+        }
+      }
+
+      axios.post('http://localhost:8080/parking-slots', newSlotData)
+      .then((response) => {
+        console.log("Create a new parking slot", response.data)
+      })
+    }
+    
+    const handleUpdateParkingSlots = (id, updatedData) => {
+      axios.put(`http://localhost:8080/parking-slots/${id}`, updatedData)
+        .then((response) => {
+          console.log("This slot has been updated!");
+          fetchParkingSlotData();
+        })
+        .catch((error) => {
+          console.error("Error updating parking slot: ", error);
+    });
+
+    }
+    const handleDeleteParkingSlots = (id) => {
+      const confirmed = window.confirm("Are you sure you want to delete this parking slot?");
+      if(confirm){
+        axios.delete(`http://localhost:8080/parking-slots/${id}`)
+          .then((response) => {
+            console.log("A slot has been deleted");
+            fetchParkingSlotData();
+          })
+          .catch((error) => {
+            console.error("Error deleting parking slot: ", error);
+          })
+      }
+    }
+
+    const handleToggleAvailability = (prop) => {
+      const updatedSlotData = {
+        available: !(prop.available),
+        employee: prop.employee,
+        isAvailable: !(prop.isAvailable),
+        isEmployee: prop.isEmployee,
+        parkingLot: {
+          parkingLotID: prop.parkingLot.parkingLotID,
+          parkingLotName: prop.parkingLot.parkingLotName,
+          parkingSlotTotal: prop.parkingLot.parkingSlotTotal,
+          parkingSlotAvailable: prop.parkingLot.parkingSlotAvailable
+        },
+        parkingSlotID: prop.parkingSlotID
+      }
+      handleUpdateParkingSlots(prop.parkingSlotID, updatedSlotData);
+    };
+  
+    const handleToggleEmployee = (prop) => {
+      const confirmed = window.confirm("Are you sure you want to change the employee status?");
+      if (confirmed) {
+        // const updatedData = { isEmployee: !isEmployee, employee: !employee };
+        const updatedSlotData = {
+          available: prop.available,
+          employee: !(prop.employee),
+          isAvailable: prop.isAvailable,
+          isEmployee: !(prop.isEmployee),
+          parkingLot: {
+            parkingLotID: prop.parkingLot.parkingLotID,
+            parkingLotName: prop.parkingLot.parkingLotName,
+            parkingSlotTotal: prop.parkingLot.parkingSlotTotal,
+            parkingSlotAvailable: prop.parkingLot.parkingSlotAvailable
+          },
+          parkingSlotID: prop.parkingSlotID
+        }
+        handleUpdateParkingSlots(prop.parkingSlotID, updatedSlotData);
+      }
+    };
 
     return(<>
     <div className="admin-parkingSlotsContainer">
@@ -33,8 +163,51 @@ export default function BackGatePage(){
                       </ul>
                     </div>
                     <Grid container className='result' style={{ backgroundColor: '#d9d9d9', width: '80%', height: '550px', marginLeft: '10px'}}>
-                     
-                    </Grid>  
+                      <div className='parking-slot-main-container'>
+                      <div className='add-btn'>
+                        <button>Create New Parking Slot</button>
+                      </div>
+
+                      <div className='parking-slot-another-container'>
+                      {parkingSlots.map((slot, index) => (
+                        <div key={slot.parkingSlotID} className="parking-slot-container">
+                          <div className='index-num'><p>{index+1}</p></div>
+                          <div className={`parking-slot-box ${slot.isEmployee ? 'employee' : 'everyone'}`}>
+                            <div className={`circle-div ${slot.isEmployee ? 'emp' : 'ever'} `}> </div>
+                            {slot.isEmployee ? 'For Employee' : 'For Everyone'}
+                          </div>
+                          <div className={`parking-slot-box ${slot.isAvailable ? 'available' : 'occupied'}`}>
+                            <div className={`circle-div ${slot.isAvailable ? 'avail' : 'occu'} `}> </div>
+                            {slot.isAvailable ? 'Available' : 'Occupied'}
+                          </div>
+                          <div className="parking-slot-buttons">
+                            <button
+                              onClick={() => {
+                                handleToggleAvailability(slot);
+                              }}
+                            >
+                              Toggle Availability
+                            </button>
+                            <button
+                              onClick={() => {
+                                handleToggleEmployee(slot);
+                              }}
+                            >
+                              Toggle Employee
+                            </button>
+                            <button
+                              onClick={() => {
+                                handleDeleteParkingSlots(slot.parkingSlotID);
+                              }}
+                            >
+                              Delete
+                            </button>
+                          </div>
+                        </div>
+                      ))}
+                      </div>
+                      </div>
+                    </Grid>
                     </div>
                   
                 </div>

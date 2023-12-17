@@ -63,6 +63,12 @@ export default function CreateUser() {
   };
 
   const handleCreateUser = () => {
+
+    if (!firstName || !lastName || !userType || !birthDate) {
+      window.alert('Please fill in all necessary fields (First Name, Last Name, User Type, Birth Date)');
+      return;
+    }
+
     const updatedFirstName = firstName.trim();
     const updatedMiddleName = middleName.trim();
     const updatedLastName = lastName.trim();
