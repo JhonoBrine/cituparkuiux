@@ -179,8 +179,9 @@ export default function BackGatePage(){
         },
         parkingSlotID: prop.parkingSlotID
       }
-      handleUpdateParkingSlots(prop.parkingSlotID, updatedSlotData);
-      setTotalAvailable(updatedSlotData.parkingLot.parkingSlotAvailable);
+      
+    handleUpdateParkingSlots(prop.parkingSlotID, updatedSlotData);
+    setTotalAvailable(updatedSlotData.parkingLot.parkingSlotAvailable);
     setTotal_slot(updatedSlotData.parkingLot.parkingSlotTotal);
     }
   };
