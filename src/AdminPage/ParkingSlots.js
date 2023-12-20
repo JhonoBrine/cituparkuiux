@@ -35,24 +35,27 @@ const ParkingSlots = () => {
 			const parkLotData = response.data;
 
 			setParkingLots(parkLotData);
+
 			console.log("Fetched Data: ", parkLotData);
 
 			//it calculates the available slots after fetching parking lot data
-			await calculateAvailableSlots(parkLotData);
+			// await calculateAvailableSlots(parkLotData);
+			const totalAvailableSlots = await calculateAvailableSlots(parkLotData);
 
 			//This calculates the sum of all parkingSlotTotal and parkingSlotAvailable
 			const totalSlots = parkLotData.reduce((accumulator, lot) => accumulator + lot.parkingSlotTotal, 0);
-			const availableSlots = parkLotData.reduce((accumulator, lot) => accumulator + lot.parkingSlotAvailable, 0);
-
+			
 			//stores the variables above into this state
-			setTotalAvailable(availableSlots);
+			setTotalAvailable(totalAvailableSlots);
 			setTotal_slot(totalSlots);
+			
 		} catch (error) {
 			console.error("Error fetching parking data: ", error)
 		}
 	}
 
 // It calculates the available slots by fetching the parkinglots
+
 
 const calculateAvailableSlots = async (parkingLots) => {
 	const counts = {};
@@ -67,6 +70,8 @@ const calculateAvailableSlots = async (parkingLots) => {
 
 	await Promise.all(promises);
 	setSlotAvailableCounts({ ...counts });
+
+	return Object.values(counts).reduce((sum, count) => sum + count, 0);
 };
 
 // Used as a way to get the total Slots of each parking Lot
@@ -95,15 +100,17 @@ const fetchParkingSlotData = () => {
 
 	const updateParkingLotData = (id) => {
 
+		// const {parkingLotName, parkingLotID, parkingSlotTotal, parkingSlotAvailable} = prop;
+
 		const updateData = {
 			parkingLotName: slotName[id],
-			parkingSlotTotal: totalSlot[id] || 0,
+			parkingSlotTotal: totalSlot[id]|| 0,
 			parkingSlotAvailable: slotAvailableCounts[id] || 0,
 
 		}
 		axios.put(`http://localhost:8080/parkinglots/${id}`, updateData)
 		.then((response) => {
-			console.log("Update Data ", response.data);
+			console.log("Update Data");
 		})
 		.catch((error) => {
 			console.error("Error fetching parking data: ", error);
