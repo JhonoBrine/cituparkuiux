@@ -5,7 +5,7 @@ import { Link, useMatch, useResolvedPath } from 'react-router-dom';
 import './sekyuCss/sekyuParkingLotView.css';
 
 export default function UserParkingLotView(){
-  const [parkingLots, setParkingLots] = useState([{}]);
+	const [parkingLots, setParkingLots] = useState([{}]);
 	const [slotAvailableCounts, setSlotAvailableCounts] = useState({});
 	const [totalSlot, setTotalSlot] = useState({});
 
@@ -34,24 +34,27 @@ export default function UserParkingLotView(){
 			const parkLotData = response.data;
 
 			setParkingLots(parkLotData);
+
 			console.log("Fetched Data: ", parkLotData);
 
 			//it calculates the available slots after fetching parking lot data
-			await calculateAvailableSlots(parkLotData);
+			// await calculateAvailableSlots(parkLotData);
+			const totalAvailableSlots = await calculateAvailableSlots(parkLotData);
 
 			//This calculates the sum of all parkingSlotTotal and parkingSlotAvailable
 			const totalSlots = parkLotData.reduce((accumulator, lot) => accumulator + lot.parkingSlotTotal, 0);
-			const availableSlots = parkLotData.reduce((accumulator, lot) => accumulator + lot.parkingSlotAvailable, 0);
-
+			
 			//stores the variables above into this state
-			setTotalAvailable(availableSlots);
+			setTotalAvailable(totalAvailableSlots);
 			setTotal_slot(totalSlots);
+			
 		} catch (error) {
 			console.error("Error fetching parking data: ", error)
 		}
 	}
 
 // It calculates the available slots by fetching the parkinglots
+
 
 const calculateAvailableSlots = async (parkingLots) => {
 	const counts = {};
@@ -66,6 +69,8 @@ const calculateAvailableSlots = async (parkingLots) => {
 
 	await Promise.all(promises);
 	setSlotAvailableCounts({ ...counts });
+
+	return Object.values(counts).reduce((sum, count) => sum + count, 0);
 };
 
 // Used as a way to get the total Slots of each parking Lot
@@ -94,15 +99,17 @@ const fetchParkingSlotData = () => {
 
 	const updateParkingLotData = (id) => {
 
+		// const {parkingLotName, parkingLotID, parkingSlotTotal, parkingSlotAvailable} = prop;
+
 		const updateData = {
 			parkingLotName: slotName[id],
-			parkingSlotTotal: totalSlot[id] || 0,
+			parkingSlotTotal: totalSlot[id]|| 0,
 			parkingSlotAvailable: slotAvailableCounts[id] || 0,
 
 		}
 		axios.put(`http://localhost:8080/parkinglots/${id}`, updateData)
 		.then((response) => {
-			console.log("Update Data ", response.data);
+			console.log("Update Data");
 		})
 		.catch((error) => {
 			console.error("Error fetching parking data: ", error);
@@ -110,21 +117,21 @@ const fetchParkingSlotData = () => {
 	}
 
 
-		const parkingLotView_btn = (id) => {
-			switch(id){
-				case 1:
-					return <Link to="/sekyu/rtl"><button>VIEW</button></Link>
-				case 2:
-					return <Link to="/sekyu/nge"><button>VIEW</button></Link>
-				case 3:
-					return <Link to="/sekyu/gle"><button>VIEW</button></Link>
-				case 4:
-					return <Link to="/sekyu/backgate"><button>VIEW</button></Link>
-				case 5:
-					return <Link to="/sekyu/library"><button>VIEW</button></Link>
-				default:
-					return null;
-			}
+	const parkingLotView_btn = (id) => {
+		switch(id){
+			case 1:
+				return <Link to="/sekyu/rtl"><button>VIEW</button></Link>
+			case 2:
+				return <Link to="/sekyu/nge"><button>VIEW</button></Link>
+			case 3:
+				return <Link to="/sekyu/gle"><button>VIEW</button></Link>
+			case 4:
+				return <Link to="/sekyu/backgate"><button>VIEW</button></Link>
+			case 5:
+				return <Link to="/sekyu/library"><button>VIEW</button></Link>
+			default:
+				return null;
+		}
 
 	}
 
@@ -146,12 +153,13 @@ const fetchParkingSlotData = () => {
 								<div className='slot-secondary'>
 										<div className='nav-leftMain'>
 											<ul>
-                          <CustomLink to="/sekyu">ALL</CustomLink>
-                          <CustomLink to="/sekyu/rtl">RTL BLDG</CustomLink>
-                          <CustomLink to="/sekyu/nge">NGE BLDG</CustomLink>
-                          <CustomLink to="/sekyu/gle">GLE BLDG</CustomLink>
-                          <CustomLink to="/sekyu/backgate">BACK GATE</CustomLink>
-                          <CustomLink to="/sekyu/library">LIBRARY</CustomLink>
+												<CustomLink to="/sekyu">ALL</CustomLink>
+												<CustomLink to="/sekyu/rtl">RTL BLDG</CustomLink>
+												<CustomLink to="/sekyu/nge">NGE BLDG</CustomLink>
+												<CustomLink to="/sekyu/gle">GLE BLDG</CustomLink>
+												<CustomLink to="/sekyu/backgate">BACK GATE</CustomLink>
+												<CustomLink to="/sekyu/library">LIBRARY</CustomLink>
+
 											</ul>
 										</div>
 										<Grid container className='result' style={{ backgroundColor: '#d9d9d9', width: '80%', height: '550px', marginLeft: '10px'}}>
@@ -191,3 +199,4 @@ function CustomLink({ to, children, ...props}){
 			</li>
 	)
 }
+

@@ -9,7 +9,10 @@ const SearchUser = () => {
   const [userType, setUserType] = useState('');
   const [searchUser, setSearchUser] = useState('');
   const [selectedUser, setSelectedUser] = useState(null);
+  const [selectedUserForUpdate, setSelectedUserForUpdate] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [updatePopUpOpen, setUpdatePopUpOpen] = useState(false);
+  const [updatedUserDetails, setUpdatedUserDetails] = useState(null);
   const [users, setUsers] = useState([]);
 
   const handleClick = (event) => {
@@ -30,20 +33,40 @@ const SearchUser = () => {
     setModalOpen(true);
   };
 
-  const handleUpdate = (user) => {
-    // Handle the update logic (e.g., navigate to an update page)
-    console.log('Update user:', user);
-    // You can navigate to an update page here or perform any other update logic
+  const handleUpdateUser = (user) => {
+    setSelectedUserForUpdate(user);
+    setUpdatedUserDetails({ ...user }); // Set the user details for update
+    setUpdatePopUpOpen(true); // Open the update popover
+  };
+
+  const handleUpdate = () => {
+    console.log('Updating user with data:', updatedUserDetails);
+  
+    axios.put(`http://localhost:8080/users/${selectedUserForUpdate.userID}`, updatedUserDetails)
+      .then(response => {
+        console.log('User updated successfully');
+        handleSearchUser();
+        setUpdatePopUpOpen(false);
+      })
+      .catch(error => {
+        console.error('Error updating user:', error);
+        if (error.response) {
+          console.error('Server responded with status code:', error.response.status);
+          console.error('Response data:', error.response.data);
+        } else if (error.request) {
+          console.error('No response received from the server');
+        } else {
+          console.error('Error setting up the request:', error.message);
+        }
+      });
   };
 
   const handleDelete = (user) => {
     console.log('Delete user:', user);
 
-    // Perform the actual delete operation in the database
     axios.delete(`http://localhost:8080/users/${user.userID}`)
       .then(response => {
         console.log('User deleted successfully');
-        // Optionally, you can refresh the user list after deletion
         handleSearchUser();
       })
       .catch(error => {
@@ -80,7 +103,7 @@ const SearchUser = () => {
         .then(response => {
           const fetchedUsers = response.data;
           setUsers(fetchedUsers);
-          handleDetails(fetchedUsers); // Assuming you want to display details of the first user
+          handleDetails(fetchedUsers);
         })
         .catch(error => {
           console.error('Error retrieving all users:', error);
@@ -91,12 +114,10 @@ const SearchUser = () => {
           const allUsers = response.data;
           let filteredUsers = allUsers;
           if (userType) {
-            filteredUsers = allUsers.filter(user => user.userType.userType === userType);
+            filteredUsers = allUsers.filter(user => user.userType && user.userType.userType === userType);
           }
           setUsers(filteredUsers);
           handleDetails(filteredUsers);
-          console.log(filteredUsers);
-          console.log("Success!!");
         })
         .catch(error => {
           console.error('Error retrieving all users:', error);
@@ -105,14 +126,11 @@ const SearchUser = () => {
       axios.get(`http://localhost:8080/users/${searchUser}`)
         .then(response => {
           const user = response.data;
-          console.log("User Details:", user);
-          console.log("Success!!");
           setUsers([user]);
           handleDetails(user);
         })
         .catch(error => {
           console.error('Error searching user:', error);
-          
         });
     }
   };
@@ -153,7 +171,7 @@ const SearchUser = () => {
                     horizontal: 'center',
                   }}
                 >
-                  <List className='Usertype-popup'>
+                  <List style={{backgroundColor: 'Gold', width: '830px', textAlign: 'center', color: 'maroon'}}className='Usertype-popup' >
                     {['STUDENT', 'EMPLOYEE', 'SECURITY GUARD', 'ADMIN'].map((type) => (
                       <ListItem button key={type} onClick={() => handleUserTypeChange(type)}>
                         <ListItemText primary={type} />
@@ -190,74 +208,140 @@ const SearchUser = () => {
       </Grid>
 
       <Modal
-  open={modalOpen}
-  onClose={handleCloseModal}
-  aria-labelledby="modal-modal-title"
-  aria-describedby="modal-modal-description"
->
-  <Box className="customBox" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
-    {selectedUser && (
-      <Paper style={{ padding: '20px', maxHeight: '80vh', overflowY: 'auto' }}>
-        {/* Display details of the selected user */}
-        <Typography variant="h5" gutterBottom>
-          User Details
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-          First Name: {selectedUser.userFName}
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-          Middle Name: {selectedUser.userMName}
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-          Last Name: {selectedUser.userLName}
-        </Typography>
-        
-        {/* Display details of other users in the list */}
-        {(Array.isArray(users) ? users : []).map((user) => (
-          <div key={user.userID} style={{ margin: '10px 0' }}>
-            <Typography variant="body1" gutterBottom>
-              User ID: {user.userID}
-            </Typography>
-            <Typography variant="body1" gutterBottom>
-              First Name: {user.userFName}
-            </Typography>
-            <Typography variant="body1" gutterBottom>
-              Middle Name: {user.userMName}
-            </Typography>
-            <Typography variant="body1" gutterBottom>
-              Last Name: {user.userLName}
-            </Typography>
-            <Grid container spacing={2}>
-              <Grid item>
-                <Button variant="contained" onClick={() => handleDetails(user)}>
-                  DETAILS
-                </Button>
+        open={modalOpen}
+        onClose={handleCloseModal}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box className="customBox" style={{ position: 'absolute', top: '50%', left: '45%', transform: 'translate(-50%, -50%)'}}>
+          {selectedUser && (
+            <Paper style={{ padding: '20px', maxHeight: '76vh', overflowY: 'auto' ,backgroundColor: 'maroon'}}>
+              <Typography variant="h5" gutterBottom>
+                User Details
+              </Typography>
+              <Typography variant="body1" gutterBottom>
+                First Name: {selectedUser.userFName}
+              </Typography>
+              <Typography variant="body1" gutterBottom>
+                Middle Name: {selectedUser.userMName}
+              </Typography>
+              <Typography variant="body1" gutterBottom>
+                Last Name: {selectedUser.userLName}
+              </Typography>
+              {(Array.isArray(users) ? users : []).map((user) => (
+                <div key={user.userID} style={{ margin: '10px 0' ,backgroundColor: 'gold'}}>
+                  <Typography variant="body1" gutterBottom>
+                    User ID: {user.userID}
+                  </Typography>
+                  <Typography variant="body1" gutterBottom>
+                    First Name: {user.userFName}
+                  </Typography>
+                  <Typography variant="body1" gutterBottom>
+                    Middle Name: {user.userMName}
+                  </Typography>
+                  <Typography variant="body1" gutterBottom>
+                    Last Name: {user.userLName}
+                  </Typography>
+                  <Grid container spacing={2}>
+                    <Grid item>
+                      <Button variant="contained" onClick={() => handleDetails(user)}>
+                        DETAILS
+                      </Button>
+                    </Grid>
+                    <Grid item>
+                      <Button variant="contained" onClick={() => handleUpdateUser(user)}>
+                        UPDATE
+                      </Button>
+                    </Grid>
+                    <Grid item>
+                      <Button variant="contained" onClick={() => handleDelete(user)}>
+                        DELETE
+                      </Button>
+                    </Grid>
+                  </Grid>
+                </div>
+              ))}
+              <Grid container spacing={2}>
+                <Grid item>
+                  <Button variant="contained" onClick={handleCloseModal}>
+                    CLOSE
+                  </Button>
+                </Grid>
               </Grid>
-              <Grid item>
-                <Button variant="contained" onClick={() => handleUpdate(user)}>
-                  UPDATE
-                </Button>
-              </Grid>
-              <Grid item>
-                <Button variant="contained" onClick={() => handleDelete(user)}>
-                  DELETE
-                </Button>
-              </Grid>
-            </Grid>
-          </div>
-        ))}
-        <Grid container spacing={2}>
-          <Grid item>
-            <Button variant="contained" onClick={handleCloseModal}>
-              CLOSE
-            </Button>
-          </Grid>
-        </Grid>
-      </Paper>
-    )}
-  </Box>
-</Modal>
+            </Paper>
+          )}
+        </Box>
+      </Modal>
 
+      <Popover
+        open={updatePopUpOpen}
+        onClose={() => setUpdatePopUpOpen(false)}
+        anchorOrigin={{
+          vertical: 'center',
+          horizontal: 'center',
+        }}
+        transformOrigin={{
+          vertical: 'center',
+          horizontal: 'center',
+        }}
+      >
+        <div style={{ padding: '20px' }}>
+          <Typography variant="h5" gutterBottom>
+            Update User Details
+          </Typography>
+          <TextField
+            label="First Name"
+            variant="outlined"
+            value={updatedUserDetails?.userFName || selectedUserForUpdate?.userFName || ''}
+            onChange={(e) => setUpdatedUserDetails({ ...updatedUserDetails, userFName: e.target.value })}
+          />
+          <TextField
+            label="Middle Name"
+            variant="outlined"
+            value={updatedUserDetails?.userMName || selectedUserForUpdate?.userMName || ''}
+            onChange={(e) => setUpdatedUserDetails({ ...updatedUserDetails, userMName: e.target.value })}
+          />
+          <TextField
+            label="Last Name"
+            variant="outlined"
+            value={updatedUserDetails?.userLName || selectedUserForUpdate?.userLName || ''}
+            onChange={(e) => setUpdatedUserDetails({ ...updatedUserDetails, userLName: e.target.value })}
+          />
+          <TextField
+            label="Birth Date"
+            variant="outlined"
+            value={updatedUserDetails?.userBirthDate || selectedUserForUpdate?.userBirthDate || ''}
+            onChange={(e) => setUpdatedUserDetails({ ...updatedUserDetails, userBirthDate: e.target.value })}
+          />
+          <TextField
+            label="Joined Date"
+            variant="outlined"
+            value={updatedUserDetails?.userJoinedDate || selectedUserForUpdate?.userJoinedDate || ''}
+            onChange={(e) => setUpdatedUserDetails({ ...updatedUserDetails, userJoinedDate: e.target.value })}
+          />
+          <TextField
+            label="Sticker Generated ID"
+            variant="outlined"
+            value={updatedUserDetails?.stickerGeneratedID || selectedUserForUpdate?.stickerGeneratedID || ''}
+            onChange={(e) => setUpdatedUserDetails({ ...updatedUserDetails, stickerGeneratedID: e.target.value })}
+          />
+          <TextField
+            label="User Type ID"
+            variant="outlined"
+            value={updatedUserDetails?.userTypeID || selectedUserForUpdate?.userTypeID || ''}
+            onChange={(e) => setUpdatedUserDetails({ ...updatedUserDetails, userTypeID: e.target.value })}
+          />
+          <TextField
+            label="Has Middle Name"
+            variant="outlined"
+            value={updatedUserDetails?.hasMiddleName || selectedUserForUpdate?.hasMiddleName || ''}
+            onChange={(e) => setUpdatedUserDetails({ ...updatedUserDetails, hasMiddleName: e.target.value })}
+          />
+          <Button variant="contained" onClick={handleUpdate}>
+            UPDATE
+          </Button>
+        </div>
+      </Popover>
     </div>
   );
 };

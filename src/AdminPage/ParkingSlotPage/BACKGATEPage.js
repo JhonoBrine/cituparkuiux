@@ -33,7 +33,7 @@ export default function BackGatePage(){
 		try {
 			const response = await axios.get('http://localhost:8080/parkinglots');
 			const temp_slots = response.data;
-			const filteredSlots = temp_slots.filter((slot) => slot && slot.parkingLotID === 4);
+			const filteredSlots = temp_slots.filter((slot) => slot && slot.parkingLotID === numberLot);
 	
 			const totalAvailableSlots = await calculateAvailableSlots(filteredSlots);
 
