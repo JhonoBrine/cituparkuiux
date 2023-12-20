@@ -171,7 +171,7 @@ const SearchUser = () => {
                     horizontal: 'center',
                   }}
                 >
-                  <List className='Usertype-popup'>
+                  <List style={{backgroundColor: 'Gold', width: '830px', textAlign: 'center', color: 'maroon'}}className='Usertype-popup' >
                     {['STUDENT', 'EMPLOYEE', 'SECURITY GUARD', 'ADMIN'].map((type) => (
                       <ListItem button key={type} onClick={() => handleUserTypeChange(type)}>
                         <ListItemText primary={type} />
@@ -213,9 +213,9 @@ const SearchUser = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box className="customBox" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+        <Box className="customBox" style={{ position: 'absolute', top: '50%', left: '45%', transform: 'translate(-50%, -50%)'}}>
           {selectedUser && (
-            <Paper style={{ padding: '20px', maxHeight: '80vh', overflowY: 'auto' }}>
+            <Paper style={{ padding: '20px', maxHeight: '76vh', overflowY: 'auto' ,backgroundColor: 'maroon'}}>
               <Typography variant="h5" gutterBottom>
                 User Details
               </Typography>
@@ -229,7 +229,7 @@ const SearchUser = () => {
                 Last Name: {selectedUser.userLName}
               </Typography>
               {(Array.isArray(users) ? users : []).map((user) => (
-                <div key={user.userID} style={{ margin: '10px 0' }}>
+                <div key={user.userID} style={{ margin: '10px 0' ,backgroundColor: 'gold'}}>
                   <Typography variant="body1" gutterBottom>
                     User ID: {user.userID}
                   </Typography>
